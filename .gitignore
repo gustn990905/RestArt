@@ -29,3 +29,47 @@ Thumbs.db
 
 # test
 coverage/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+
+# IDE
+.idea/
+
+# Secrets / keys
+key/
+testkey/
+*.pem
+*.key
+*.crt
+*.p12
+*.jks
+
+# Backend env
+.env
+.env.local
+.env.development
+.env.production
+application-secret.yml
+application-prod.yml
+
+# Java / Spring build
+build/
+target/
+
+# Unity
+Library/
+Temp/
+Obj/
+Build/
+Builds/
+Logs/
+UserSettings/
+.vs/
+*.csproj
+*.sln
