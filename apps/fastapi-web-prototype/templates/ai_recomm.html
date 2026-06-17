@@ -1,0 +1,379 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>RestArt</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <link rel="stylesheet" href="{{ url_for('static', path='ai_recomm/css/recommmain2.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='ai_recomm/css/bootstrap-responsive.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='ai_recomm/css/prettyPhoto.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='ai_recomm/css/custom-styles.css') }}">
+    <script src="{{ url_for('static', path='ai_recomm/js/bootstrap.js') }}"></script>
+    <script src="{{ url_for('static', path='ai_recomm/js/jquery.prettyPhoto.js') }}"></script>
+    <script src="{{ url_for('static', path='ai_recomm/js/jquery.custom.js') }}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="{{ url_for('static', path='ai_recomm/css/bootstrap2.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', path='ai_recomm/css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', path='ai_recomm/css/nav_top3.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', path='ai_recomm/css/responsive.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', path='ai_recomm/css/colors.css') }}" rel="stylesheet">
+    <style>
+        @media (max-width: 850px) {
+            #chooseFile {
+                width: 70px;
+            }
+        }
+
+        .container2 {
+            display: none;
+        }
+
+        .picture-display-flex {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .addImage {
+            width: 798px;
+            height: 300px;
+            background-color: white;
+            border-radius: 20px 20px / 20px 20px;
+            overflow: hidden;
+            margin: 10px 0px 10px 0px;
+            z-index: 1;
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+            .addImage img {
+                width: auto !important;
+                height: 100%;
+                object-fit: cover;
+            }
+
+        .container_2 {
+            position: absolute;
+            z-index: 1;
+            top: 83%;
+            left: 46%;
+        }
+
+        .image-upload {
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        #chooseFile {
+            visibility: hidden;
+        }
+
+        .buttonContainer {
+            position: relative;
+            left: -70%;
+            width: 65%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 10px;
+            background-color: black;
+            color: white;
+            border-radius: 30px;
+            padding: 10px;
+            font-size: 0.8em;
+            cursor: pointer;
+        }
+
+        .buttonContainer #submitButton {
+            color: white;
+            background-color: black;
+            border-top : none;
+            border-left : none;
+        }
+
+        .gallery-item img {
+            width: 100%; /* 이미지 너비를 컨테이너의 100%로 설정 */
+            height: 200px; /* 고정 높이 설정 */
+            object-fit: cover; /* 이미지가 컨테이너를 꽉 채우도록 하면서 종횡비 유지 */
+            border-radius: 10px; /* 이미지에 둥근 모서리 효과 적용 */
+        }
+
+        .gallery-item {
+            margin-bottom: 20px; /* 갤러리 아이템 간의 간격 조정 */
+            background: #f8f8f8; /* 배경색 설정 */
+            padding: 10px; /* 패딩 설정 */
+            border: 1px solid #eaeaea; /* 테두리 설정 */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* 그림자 효과 */
+        }
+    </style>
+</head>
+<body style="background: white">
+    <div id="wrapper2" style="height: 100px; font-size: 40px; align-content: center; text: black; padding: 30px; background: white">
+        RestArt
+    </div>
+    <form class="inputImage picture-display-flex" method="post" enctype="multipart/form-data" style="background: white" id="uploadForm">
+        <!-- 이미지 파일 데이터에 알맞는 enctype 설정 -->
+        <div class="addImage" id="image-show" style="border-bottom: 2px solid #6699FF; border-right: 2px solid #3366FF; border-left: 2px solid #99CCFF;">
+            <!-- 이미지 띄울 공간 -->
+        </div>
+        <div class="container_2">
+            <div class="image-upload" id="image-upload">
+                <div class="button2">
+                    <label for="chooseFile">
+                        👉 CLICK HERE! 👈
+                    </label>
+                </div>
+                <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)">
+                <div class="fileContainer">
+                    <div class="buttonContainer">
+                        <button  onclick="selectRandomImage()" type="submit" id="submitButton">SUBMIT</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </form>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <!-- Dropzone css+js -->
+    <link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css" />
+    <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
+
+    <!-- 클러스터링 출력 -->
+    <div class="intro__cluster" style="background-color: white; padding: 40px 40px 10px 40px; display: none">
+        <section id="intro" class="main">
+            <h2>업로드한 이미지의 색 분석</h2>
+            <div class="main__img">
+                <img id="randomImage" src="" alt="Clustered Image" width="400" height="400">
+            </div>
+            <div class="text2">
+                <h1>추천된 단어 : </h1>
+                <h1>{{ fin[0] }}, {{ fin[1] }}, {{ fin[2] }}</h1>
+            </div>
+        </section>
+    </div>
+    <!-- 작품 추천 파트 -->
+    <h2 class="recom_h2" style="text-align: center; margin: 30px 0 50px 0;">작품 추천</h2>
+    <div class="container2" id="container2">
+        <div class="row">
+            <!-- Gallery Items -->
+            <div class="span12 gallery">
+                <div class="row clearfix">
+                    <ul class="gallery-post-grid holder">
+                        <!-- Gallery Item 1 -->
+                        <li class="span4 gallery-item" data-id="id-1" data-type="illustration">
+                            <span class="gallery-hover-3col hidden-phone hidden-tablet">
+                                <span class="gallery-icons">
+                                    <a href="{{ url_for('static', path='ai_recomm/image/gallery/강두형_소풍가는 날.jpg') }}" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
+                                    <a href="gallery-single.htm" class="item-details-link"></a>
+                                </span>
+                            </span>
+                            <a href="gallery-single.htm"><img src="{{ url_for('static', path='ai_recomm/image/gallery/강두형_빛 - 산토리니.jpg') }}" alt="Gallery"></a>
+                            <span class="project-details"><a href="gallery-single.htm">Custom Illustration</a>For an international add campaign.</span>
+                        </li>
+                        <!-- Pagination -->
+                        <div class="pagination">
+                            <ul>
+                                <li class="active"><a href="#">Prev</a></li>
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">Next</a></li>
+                            </ul>
+                        </div>
+                </div><!-- End gallery list -->
+            </div><!-- End container row -->
+        </div>
+</body>
+<script>
+    function loadFile(input) {
+        let file = input.files[0]; // 선택된 파일 가져오기
+        let container = document.getElementById('image-show');
+
+        // 기존 이미지가 있으면 제거
+        let existingImage = document.getElementById('img-id');
+        if (existingImage) {
+            container.removeChild(existingImage);
+        }
+
+        // 새 이미지 추가
+        let newImage = document.createElement("img");
+        newImage.src = URL.createObjectURL(file);
+        newImage.id = "img-id";
+        newImage.style.height = "100%";
+        newImage.style.objectFit = "cover";
+
+        // 이미지를 image-show div에 추가
+        container.appendChild(newImage);
+
+        // 버튼 텍스트를 SUBMIT으로 변경
+        let button = document.getElementById("submitButton");
+        button.innerText = "SUBMIT";
+
+        // container2와 intro__cluster 스타일을 none으로 변경
+        let elements = document.querySelectorAll('#container2, .intro__cluster');
+        elements.forEach(function (element) {
+            element.style.display = "none";
+        });
+    }
+
+    document.getElementById("submitButton").addEventListener("click", function () {
+        let elements = document.querySelectorAll('#container2, .intro__cluster');
+
+        // Get the image element
+        let imgElement = document.getElementById("img-id");
+
+        // Check if the image exists
+        if (!imgElement) {
+            // If the image does not exist, hide container2 and intro__cluster and return
+            elements.forEach(function (element) {
+                element.style.display = "none";
+            });
+            return;
+        }
+
+        elements.forEach(function (element) {
+            // Get the current display style of the element
+            let currentDisplay = getComputedStyle(element).display;
+
+            // If the element is hidden, show it; otherwise, hide it
+            if (currentDisplay === "none") {
+                element.style.display = "flex"; // Change display to flex for side-by-side alignment
+            } else {
+                element.style.display = "none";
+            }
+        });
+
+        // Remove the image if it exists
+        if (imgElement) {
+            imgElement.parentNode.removeChild(imgElement);
+        }
+
+        // Change the button text from "SUBMIT" to "RESET" and vice versa
+        let button = document.getElementById("submitButton");
+        if (button.innerText === "SUBMIT") {
+            button.innerText = "RESET";
+        } else if (button.innerText === "RESET") {
+            button.innerText = "SUBMIT";
+        }
+    });
+</script>
+<script>
+    document.getElementById("submitButton").addEventListener("click", function () {
+        let galleryContainer = document.querySelector('.gallery-post-grid');
+        galleryContainer.innerHTML = '';
+
+        let imagePaths = [
+            'static/ai_recomm/image/images/김복만_오메기 마을의 봄.jpg',
+            'static/ai_recomm/image/images/김선종_달항아리 봄맞이.jpg',
+            'static/ai_recomm/image/images/김선휘_무제.jpg',
+            "static/ai_recomm/image/images/김성호_repeat & life #2.jpg",
+            "static/ai_recomm/image/images/김성호_흙길 위.jpg",
+            "static/ai_recomm/image/images/김은정_화려한 날.jpg",
+            "static/ai_recomm/image/images/김일지_Somnium.jpg",
+            "static/ai_recomm/image/images/김은지_Everlasting Moment 3.jpg",
+            "static/ai_recomm/image/images/김은희_다른 시간을 향하여Ⅳ.jpg",
+            "static/ai_recomm/image/images/김이린_뾰족하지만 뾰족하지 않은 나무.jpg",
+            "static/ai_recomm/image/images/김이슬_죽성성당.jpg",
+            "static/ai_recomm/image/images/김자혜_there_s a rule in a room.jpg",
+            "static/ai_recomm/image/images/김일지_Somnium.jpg",
+            "static/ai_recomm/image/images/김자혜_comfort zone.jpg",
+            "static/ai_recomm/image/images/김정희_From the sea.jpg",
+            "static/ai_recomm/image/images/김정희_달빛소나타(2)-춤추는 달빛.jpg",
+            "static/ai_recomm/image/images/김지선_Canvas Gardening_03.jpg",
+            "static/ai_recomm/image/images/김지선_city nomad.jpg",
+            "static/ai_recomm/image/images/김지우_숲.jpg",
+            "static/ai_recomm/image/images/김지혜_WHITE FLOW 2.jpg",
+            "static/ai_recomm/image/images/김지희_정물35.jpg",
+            "static/ai_recomm/image/images/김진희_Jini Blue.jpg",
+            "static/ai_recomm/image/images/김태형_마흔살의 책상.jpg",
+            "static/ai_recomm/image/images/김태린_My Dear - 21.jpg",
+            "static/ai_recomm/image/images/김태균_펭귄들.jpg",
+            "static/ai_recomm/image/images/강두형_소풍가는 날.jpg",
+            "static/ai_recomm/image/images/강두형_빛 - 산토리니.jpg",
+            "static/ai_recomm/image/images/VESPER KWON_Sureness. 2.jpg",
+            "static/ai_recomm/image/images/TOACHI_Music makes me happy.jpg",
+            "static/ai_recomm/image/images/TOACHI_ICE CREAM II.jpg"
+        ];
+
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                let j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        shuffle(imagePaths);
+
+        imagePaths.forEach(function (path) {
+            let listItem = document.createElement('li');
+            listItem.className = 'span4 gallery-item';
+
+            let img = document.createElement('img');
+            img.src = path;
+            img.alt = 'Gallery';
+
+            listItem.appendChild(img);
+
+            let details = document.createElement('span');
+            details.className = 'project-details';
+            let detailLink = document.createElement('a');
+            detailLink.href = 'gallery-single.htm';
+            detailLink.textContent = 'View Details';
+            details.appendChild(detailLink);
+
+            listItem.appendChild(details);
+            galleryContainer.appendChild(listItem);
+        });
+    });
+</script>
+
+<script>
+document.getElementById('uploadForm').addEventListener('submit', async function(e) {
+    e.preventDefault(); // Prevent the default form submission
+    const formData = new FormData(this);
+    const response = await fetch('/upload/', {
+        method: 'POST',
+        body: formData,
+    });
+    const result = await response.json();
+
+    if (response.ok) {
+        console.log('Upload successful:', result);
+        const imageShowDiv = document.getElementById('image-show');
+        imageShowDiv.innerHTML = '<img src="' + result.result_image + '" width="400" height="400" />';
+    } else {
+        console.error('Upload failed:', result);
+    }
+});
+</script>
+
+<script>
+    function selectRandomImage() {
+        const imagePaths = [
+            'static/results/cluster1.png',
+            'static/results/cluster2.png',
+            'static/results/cluster3.png',
+            'static/results/cluster4.png',
+            'static/results/cluster5.png',
+            'static/results/cluster6.png',
+            'static/results/cluster7.png'
+        ];
+
+        // 이미지 경로 중에서 랜덤으로 하나를 선택합니다.
+        const randomImagePath = imagePaths[Math.floor(Math.random() * imagePaths.length)];
+
+        // 선택된 이미지 경로로 이미지 소스를 업데이트합니다.
+        document.getElementById('randomImage').src = randomImagePath;
+    }
+</script>
+
+
+</html>

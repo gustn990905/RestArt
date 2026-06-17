@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="{{ url_for('static', path='gallery_itemdetail/css/main.css') }}" rel="stylesheet">
+        <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', path='gallery_itemdetail/css/bootstrap.css') }}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', path='gallery_itemdetail/css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', path='gallery_itemdetail/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', path='gallery_itemdetail/css/nav_top3.css') }}" rel="stylesheet">
+
+    <!-- Responsive styles for this template -->
+    <link href="{{ url_for('static', path='gallery_itemdetail/css/responsive.css') }}" rel="stylesheet">
+
+    <!-- Colors for this template -->
+    <link href="{{ url_for('static', path='gallery_itemdetail/css/colors.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div id="nav_wrapper">
+        <div class="topbar-section">
+            <div class="container-fluid">
+                <div class="row2 align-items-center justify-content-end"> <!-- Flexbox를 사용해 요소를 오른쪽에 정렬 -->
+                    <div id="search-ranking" class="col-auto"> <!-- 실시간 검색어 -->
+                        <h2 class="blind">실시간 검색어</h2>
+                        <div class="current-rank">
+                            <span class="rank-number">1</span>
+                            <span class="rank-title">김현수</span>
+                        </div>
+                        <ul>
+                            <li>
+                                <span class="rank-number">1</span>
+                                <span class="rank-title">김현수</span>
+                            </li>
+                            <li>
+                                <span class="rank-number">2</span>
+                                <span class="rank-title">이민혁</span>
+                            </li>
+                            <li>
+                                <span class="rank-number">3</span>
+                                <span class="rank-title">이상준</span>
+                            </li>
+                            <li>
+                                <span class="rank-number">4</span>
+                                <span class="rank-title">이지원</span>
+                            </li>
+                            <li>
+                                <span class="rank-number">5</span>
+                                <span class="rank-title">이윤호</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-auto"> <!-- 검색 아이콘 -->
+                        <input type="text" id="searchInput" class="form-control topsearch text-right" style="display: none;" placeholder="검색하기">
+                        <i class="fa fa-search" id="searchIcon"></i>
+                    </div>
+                    <script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        const searchInput = document.getElementById('searchInput');
+                        const searchIcon = document.getElementById('searchIcon');
+
+                        searchIcon.addEventListener('click', function() {
+                            if (searchInput.style.display === "block") {
+                                if (searchInput.value.trim() !== "") {
+                                    performSearch(searchInput.value); // 검색 실행
+                                }
+                            } else {
+                                searchInput.style.display = "block"; // 검색창 표시
+                                searchInput.focus(); // 포커스를 검색창에 둠
+                            }
+                        });
+
+                        searchInput.addEventListener('keypress', function(event) {
+                            if (event.key === "Enter") {
+                                performSearch(searchInput.value);
+                            }
+                        });
+
+                        function performSearch(query) {
+                            console.log("검색어: ", query); // 실제 구현에서는 검색 결과 페이지로 리다이렉트 등의 로직 추가
+                            // 예: window.location.href = '/search?query=' + encodeURIComponent(query);
+                        }
+
+                        // 추가된 부분: 문서를 클릭할 때 검색창 밖을 클릭하면 검색창을 숨김
+                        document.addEventListener('click', function(event) {
+                            const isClickInside = searchInput.contains(event.target) || searchIcon.contains(event.target);
+
+                            if (!isClickInside) {
+                                searchInput.style.display = "none"; // 검색창 숨김
+                            }
+                        });
+                    });
+                    </script>
+
+                </div>
+            </div>
+
+        </div><!-- end topbar -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+            const currentRank = document.querySelector("#search-ranking .current-rank");
+            const rankItems = document.querySelectorAll("#search-ranking ul li");
+
+            let currentIndex = 0;
+
+            function showNextRank() {
+                if (rankItems.length === 0) return; // 순위 목록이 비어있으면 아무것도 하지 않음
+
+                currentIndex = (currentIndex + 1) % rankItems.length; // 다음 순위로 이동
+                const rankItem = rankItems[currentIndex];
+
+                // 현재 순위를 업데이트
+                currentRank.innerHTML = `
+                    <span class="rank-number">${rankItem.querySelector('.rank-number').textContent}</span>
+                    <span class="rank-title">${rankItem.querySelector('.rank-title').textContent}</span>
+                `;
+            }
+            setInterval(showNextRank, 3000); // 2초마다 순위를 갱신
+        });
+        </script>
+
+        <div class="header-section">
+            <div class="container">
+                <div class="row2">
+                    <div class="col-md-12">
+                        <div class="logo">
+                            <a href="{{ url_for('main_page') }}"><img class="logo_img" src="{{ url_for('static', path='main_page/image/RestArt.png') }}" alt=""></a>
+                        </div>
+                    </div>
+                </div><!-- end row -->
+            </div><!-- end header-logo -->
+        </div><!-- end header -->
+
+        <header class="header">
+            <div class="container">
+                <nav class="navbar navbar-inverse navbar-toggleable-md">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#cloapediamenu" aria-controls="cloapediamenu" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-md-center" id="cloapediamenu">
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown has-submenu">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">작가</a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdown02">
+                                    <li><a class="dropdown-item" href="{{ url_for('artistinform') }}">작가 소개</a></li>
+                                    <li><a class="dropdown-item" href="{{ url_for('enroll') }}">작품 등록</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown has-submenu">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">작품 보러가기</a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdown02">
+                                    <li><a class="dropdown-item" href="{{ url_for('gallery') }}">갤러리</a></li>
+                                    <li><a class="dropdown-item" href="{{ url_for('imci') }}">메타 버스</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown has-submenu">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">AI 작품 추천</a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdown02">
+                                    <li><a class="dropdown-item" href="{{ url_for('imci') }}">풍수지리</a></li>
+                                    <li><a class="dropdown-item" href="{{ url_for('ai_recomm') }}">AI 작품 추천</a></li>
+                                    <li><a class="dropdown-item" href="{{ url_for('imci') }}">AR 인테리어</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown has-submenu">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">커뮤니티</a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdown02">
+                                    <li><a class="dropdown-item" href="{{ url_for('exhibition') }}">전시 정보</a></li>
+                                    <li><a class="dropdown-item" href="{{ url_for('community_main') }}">인테리어 공유</a></li>
+                                    <li><a class="dropdown-item" href="{{ url_for('imci') }}">리뷰</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link color-skyblue-hover" href="{{ url_for('imci') }}">아트컨설팅</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link color-skyblue-hover" href="{{ url_for('imci') }}">회사소개</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link color-skyblue-hover" href="{{ url_for('login') }}">로그인</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div><!-- end container -->
+        </header><!-- end header -->
+        <script src="{{ url_for('static', path='gallery_itemdetail/js/bootstrap.min.js') }}"></script>
+        <script src="{{ url_for('static', path='gallery_itemdetail/js/jquery.min.js') }}"></script>
+    </div>
+    <header id="header" style="background-position: left 0px;">
+                    <div class="inner">
+                        <img src="{{ url_for('static', path='gallery_itemdetail/image/thumbs/01.jpg') }}">
+                    </div>
+    </header>
+    <div id="main">
+        <section id="one">
+            <div class="info">
+                      <table>
+                        <tbody>
+                          <tr>
+                            <th>
+                              작가명 | Arist
+                            </th>
+                            <td>
+                              권봄이 | Bom-e Kwon <a href="/marketPlace/artist.php?idx=274" class="link">작가 작품 모아보기</a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>
+                              제작연도 | Year
+                            </th>
+                            <td>
+                              2019                </td>
+                          </tr>
+                          <tr>
+                            <th>
+                              장르 | Genre
+                            </th>
+                            <td>
+                              조각 | Sculpture                  <a href="javascript:void(0);" onclick="market_link();" class="link">조각작품 모아보기</a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>
+                              재료 | Medium
+                            </th>
+                            <td>
+                              나무 판넬에 종이 | Paper on wood panel                </td>
+                          </tr>
+                          <tr>
+                            <th>
+                              액자 | Frame
+                              <div class="tooltip">
+                                <div class="tooltip_btn">!</div>
+                                <!--<div class="tooltip_cont">
+                                                        이 작품에는 작가가 직접 작품에 맞게 선택한 액자가 포함되어 있습니다.
+                                                      </div>-->
+                              </div>
+                            </th>
+                            <td>
+                              있음 | Yes <a href="javascript:void(0);" class="link" onclick="IscrollTo('#marketDetailView .frameGuide');">액자 고르기</a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>
+                              크기 | Size
+                              <div class="tooltip">
+                                <div class="tooltip_btn">!</div>
+                                <!--<div class="tooltip_cont">
+                                  세로(Height) × 가로(Width) × 깊이(Depth)  순서
+                                </div>-->
+                              </div>
+                            </th>
+                            <td>
+                              50x50x5cm                   | <span class="eng">12호</span>                </td>
+                          </tr>
+                          <tr>
+                            <th>
+                              배송비 | Shipping Cost
+                            </th>
+                            <td>
+                              무료                </td>
+                          </tr>
+                          <tr>
+                            <th>
+                              배송방법 | Shipping
+                            </th>
+                            <td>
+                              무료배송
+                              <div class="tooltip">
+                                <div class="tooltip_btn">!</div>
+                                <!--<div class="tooltip_cont">
+                                  해당 작품은 택배 배송(무료)되거나 개별 차량 배송(무료)됩니다. 전문 테크니션의 설치를 원하실 경우 별도의 설치비용이 발생하니 별도문의 주세요.
+                                </div>-->
+                              </div>
+
+
+                              <a href="javascript:void(0);" class="link" onclick="IscrollTo('#marketDetailView .shipping01');">배송안내 바로가기</a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+                <ul class="actions">
+                    <li><a href="#" class="button">구매하기</a></li>
+                    <li><a href="#" class="button">찜 하기</a></li>
+                </ul>
+        </section>
+        <section id="two">
+            <h2>Detail information</h2>
+            <div class="row">
+                <article class="Detail-information col-12">
+                    <p>인간의 일생을 건축적으로 해석하고 표현. 벽돌을 한 층 한 층 쌓아 올리며 하나의
+                    건축물이 완성되듯, 하루하루 사건과 경험들이 모여 한 사람의 인생이 만들어진다.</p>
+                </article>
+            </div>
+            <ul class="actions">
+                <li><a href="#" class="button">Full Portfolio</a></li>
+            </ul>
+        </section>
+        <section id="three">
+            <h2>another Work</h2>
+            <div class="row">
+                <article class="col-6 col-12-xsmall work-item">
+                    <a class="image fit thumb" style="cursor: pointer; outline: 0px;"><img src="{{ url_for('static', path='gallery_itemdetail/image/thumbs/01.jpg') }}" alt=""></a>
+                    <h3>Magna sed consequat tempus</h3>
+                    <p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
+                </article>
+                <article class="col-6 col-12-xsmall work-item">
+                    <a class="image fit thumb" style="cursor: pointer; outline: 0px;"><img src="{{ url_for('static', path='gallery_itemdetail/image/thumbs/02.jpg') }}" alt=""></a>
+                    <h3>Ultricies lacinia interdum</h3>
+                    <p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
+                </article>
+                <article class="col-6 col-12-xsmall work-item">
+                    <a class="image fit thumb" style="cursor: pointer; outline: 0px;"><img src="{{ url_for('static', path='gallery_itemdetail/image/thumbs/03.jpg') }}" alt=""></a>
+                    <h3>Tortor metus commodo</h3>
+                    <p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
+                </article>
+                <article class="col-6 col-12-xsmall work-item">
+                    <a class="image fit thumb" style="cursor: pointer; outline: 0px;"><img src="{{ url_for('static', path='gallery_itemdetail/image/thumbs/04.jpg') }}" alt=""></a>
+                    <h3>Quam neque phasellus</h3>
+                    <p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
+                </article>
+                <article class="col-6 col-12-xsmall work-item">
+                    <a class="image fit thumb" style="cursor: pointer; outline: 0px;"><img src="{{ url_for('static', path='gallery_itemdetail/image/thumbs/05.jpg') }}" alt=""></a>
+                    <h3>Nunc enim commodo aliquet</h3>
+                    <p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
+                </article>
+                <article class="col-6 col-12-xsmall work-item">
+                    <a class="image fit thumb" style="cursor: pointer; outline: 0px;"><img src="{{ url_for('static', path='gallery_itemdetail/image/thumbs/06.jpg') }}" alt=""></a>
+                    <h3>Risus ornare lacinia</h3>
+                    <p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
+                </article>
+            </div>
+            <ul class="actions">
+                <li><a href="#" class="button">Full Portfolio</a></li>
+            </ul>
+        </section>
+    </div>
+    <script>
+        window.addEventListener('scroll', function() {
+    var header = document.getElementById('header');
+    var scrollPosition = window.scrollY;
+
+    // 스크롤 위치가 270px 이상인 경우
+    if (scrollPosition >= 160) {
+        header.classList.add('active'); // active 클래스를 추가하여 transform이 활성화되도록 함
+    } else {
+        header.classList.remove('active'); // 스크롤 위치가 270px 미만인 경우 active 클래스 제거
+    }
+});
+    </script>
+
+</body>
+</html>

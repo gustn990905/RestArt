@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google Web Fonts -->
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@600&family=Lobster+Two:wght@700&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ /css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta property="og:description" content="예술의 선두주자 RestArt">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="{{ url_for('static', path='main_page/css/main_final2_3.css') }}" rel="stylesheet">
+
+
+    <!-- bootstrap css -->
+    <link href="{{ url_for('static', path='main_page/css/responsive2_1.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+
+    <title>예술의 선두 주자 RestArt</title>
+
+    <link href="{{ url_for('static', path='main_page/css/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', path='main_page/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', path='main_page/css/bootstrap.min2.css') }}" rel="stylesheet">
+
+    <!-- nav css -->
+    <link href="{{ url_for('static', path='main_page/css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', path='main_page/css/nstyle.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', path='main_page/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', path='main_page/css/nav_top3.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', path='main_page/css/responsive.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', path='main_page/css/colors.css') }}" rel="stylesheet">
+    <!--<link href="{{ url_for('static', path='main_page/css/main.css') }}" rel="stylesheet">-->
+    <!-- Additional CSS Files -->
+
+    <link href="{{ url_for('static', path='main_page/css/templatemo-hexashop_2.css') }}" rel="stylesheet">
+    <!--<link href="{{ url_for('static', path='main_page/css/nstyle.css') }}" rel="stylesheet">-->
+    <link href="{{ url_for('static', path='main_page/css/style_2.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', path='main_page/css/style2_1.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', path='main_page/css/style3_3.css') }}" rel="stylesheet">
+
+</head>
+
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Amatic+SC');
+
+    .button_container {
+        position: absolute;
+        left: 0;
+        right: 0;
+        .description, .link
+
+    {
+        font-family: 'Amatic SC', cursive;
+        text-align: center;
+    }
+
+    .description {
+        font-size: 35px;
+    }
+
+    .btn {
+        border: none;
+        display: block;
+        text-align: center;
+        cursor: pointer;
+        text-transform: uppercase;
+        outline: none;
+        overflow: hidden;
+        position: relative;
+        color: #fff;
+        font-weight: 700;
+        font-size: 15px;
+        background-color: #222;
+        padding: 17px 60px;
+        margin: 0 auto;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.20);
+    }
+
+        .btn span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 490%;
+            width: 140%;
+            background: #78c7d2;
+            -webkit-transition: all .5s ease-in-out;
+            transition: all .5s ease-in-out;
+            -webkit-transform: translateX(-98%) translateY(-25%) rotate(45deg);
+            transform: translateX(-98%) translateY(-25%) rotate(45deg);
+        }
+
+        .btn:hover:after {
+            -webkit-transform: translateX(-9%) translateY(-25%) rotate(45deg);
+            transform: translateX(-9%) translateY(-25%) rotate(45deg);
+        }
+
+    .link {
+        font-size: 20px;
+        margin-top: 30px;
+    }
+
+        .link a {
+            color: #000;
+            font-size: 25px;
+        }
+</style>
+
+<body style="background-color: #FFF2EF;">
+
+    <!-- ***** Preloader Start ***** -->
+    <div id="nav_wrapper">
+        <div class="topbar-section">
+            <div class="container-fluid">
+                <div class="row2 align-items-center justify-content-end">
+                    <!-- Flexbox를 사용해 요소를 오른쪽에 정렬 -->
+                    <div id="search-ranking" class="col-auto">
+                        <!-- 실시간 검색어 -->
+                        <h2 class="blind">실시간 검색어</h2>
+                        <div class="current-rank">
+                            <span class="rank-number">1</span>
+                            <span class="rank-title">김현수</span>
+                        </div>
+                        <ul>
+                            <li>
+                                <span class="rank-number">1</span>
+                                <span class="rank-title">김현수</span>
+                            </li>
+                            <li>
+                                <span class="rank-number">2</span>
+                                <span class="rank-title">이민혁</span>
+                            </li>
+                            <li>
+                                <span class="rank-number">3</span>
+                                <span class="rank-title">이상준</span>
+                            </li>
+                            <li>
+                                <span class="rank-number">4</span>
+                                <span class="rank-title">이지원</span>
+                            </li>
+                            <li>
+                                <span class="rank-number">5</span>
+                                <span class="rank-title">이윤호</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-auto">
+                        <!-- 검색 아이콘 -->
+                        <input type="text" id="searchInput" class="form-control topsearch text-right" style="display: none;" placeholder="검색하기">
+                        <i class="fa fa-search" id="searchIcon"></i>
+                    </div>
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function () {
+                            const searchInput = document.getElementById('searchInput');
+                            const searchIcon = document.getElementById('searchIcon');
+
+                            searchIcon.addEventListener('click', function () {
+                                if (searchInput.style.display === "block") {
+                                    if (searchInput.value.trim() !== "") {
+                                        performSearch(searchInput.value); // 검색 실행
+                                    }
+                                } else {
+                                    searchInput.style.display = "block"; // 검색창 표시
+                                    searchInput.focus(); // 포커스를 검색창에 둠
+                                }
+                            });
+
+                            searchInput.addEventListener('keypress', function (event) {
+                                if (event.key === "Enter") {
+                                    performSearch(searchInput.value);
+                                }
+                            });
+
+                            function performSearch(query) {
+                                console.log("검색어: ", query); // 실제 구현에서는 검색 결과 페이지로 리다이렉트 등의 로직 추가
+                                // 예: window.location.href = '/search?query=' + encodeURIComponent(query);
+                            }
+
+                            // 추가된 부분: 문서를 클릭할 때 검색창 밖을 클릭하면 검색창을 숨김
+                            document.addEventListener('click', function (event) {
+                                const isClickInside = searchInput.contains(event.target) || searchIcon.contains(event.target);
+
+                                if (!isClickInside) {
+                                    searchInput.style.display = "none"; // 검색창 숨김
+                                }
+                            });
+                        });
+                    </script>
+
+                </div>
+            </div>
+
+        </div><!-- end topbar -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const currentRank = document.querySelector("#search-ranking .current-rank");
+                const rankItems = document.querySelectorAll("#search-ranking ul li");
+
+                let currentIndex = 0;
+
+                function showNextRank() {
+                    if (rankItems.length === 0) return; // 순위 목록이 비어있으면 아무것도 하지 않음
+
+                    currentIndex = (currentIndex + 1) % rankItems.length; // 다음 순위로 이동
+                    const rankItem = rankItems[currentIndex];
+
+                    // 현재 순위를 업데이트
+                    currentRank.innerHTML = `
+                            <span class="rank-number">${rankItem.querySelector('.rank-number').textContent}</span>
+                            <span class="rank-title">${rankItem.querySelector('.rank-title').textContent}</span>
+                        `;
+                }
+                setInterval(showNextRank, 3000); // 2초마다 순위를 갱신
+            });
+        </script>
+
+        <div class="header-section">
+            <div class="container">
+                <div class="row2">
+                    <div class="col-md-12">
+                        <div class="logo">
+                            <a href="{{ url_for('main_page') }}"><img class="logo_img" src="{{ url_for('static', path='main_page/image/RestArt.png') }}" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <header class="header">
+            <div class="container">
+                <nav class="navbar navbar-inverse navbar-toggleable-md">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#cloapediamenu" aria-controls="cloapediamenu" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-md-center" id="cloapediamenu">
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown has-submenu">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">작가</a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdown02">
+                                    <li><a class="dropdown-item" href="{{ url_for('artistinform') }}">작가 소개</a></li>
+                                    <li><a class="dropdown-item" href="{{ url_for('enroll') }}">작품 등록</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown has-submenu">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">작품 보러가기</a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdown02">
+                                    <li><a class="dropdown-item" href="{{ url_for('gallery') }}">갤러리</a></li>
+                                    <li><a class="dropdown-item" href="{{ url_for('imci') }}">메타 버스</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown has-submenu">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">AI 작품 추천</a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdown02">
+                                    <li><a class="dropdown-item" href="{{ url_for('imci') }}">풍수지리</a></li>
+                                    <li><a class="dropdown-item" href="{{ url_for('ai_recomm') }}">AI 작품 추천</a></li>
+                                    <li><a class="dropdown-item" href="{{ url_for('imci') }}">AR 인테리어</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown has-submenu">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">커뮤니티</a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdown02">
+                                    <li><a class="dropdown-item" href="{{ url_for('exhibition') }}">전시 정보</a></li>
+                                    <li><a class="dropdown-item" href="{{ url_for('community_main') }}">인테리어 공유</a></li>
+                                    <li><a class="dropdown-item" href="{{ url_for('imci') }}">리뷰</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link color-skyblue-hover" href="{{ url_for('imci') }}">아트컨설팅</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link color-skyblue-hover" href="{{ url_for('imci') }}">회사소개</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link color-skyblue-hover" href="{{ url_for('login') }}">로그인</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div><!-- end container -->
+        </header><!-- end header -->
+        <script src="{{ url_for('static', path='main_page/js/jquery.min.js') }}"></script>
+        <script src="{{ url_for('static', path='main_page/js/bootstrap.min.js') }}"></script>
+        <!-- ***** Header Area End ***** -->
+    </div>
+    <div class="header-section" style="background-color: #FFF2EF;">
+        <div class="container-fluid">
+            <div class="banner_section layout_padding">
+                <div id="my_slider" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="image_main">
+                                <div class="container1">
+                                    <h3 class="banner_taital">RestArt 리셀</h3>
+                                    <img class="image_1" src="{{ url_for('static', path='main_page/image/m1.png') }}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="image_main">
+                                <div class="container1">
+                                    <h3 class="banner_taital">제임수달 개인전</h3>
+                                    <img src="{{ url_for('static', path='main_page/image/m2.png') }}" class="image_1">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="image_main">
+                                <div class="container1">
+                                    <h3 class="banner_taital">오순이 개인전</h3>
+                                    <img src="{{ url_for('static', path='main_page/image/m3.png') }}" class="image_1">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#my_slider" role="button" data-slide="prev">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a class="carousel-control-next" href="#my_slider" role="button" data-slide="next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ***** Main Banner Area Start ***** -->
+        <div class="main-banner" id="top">
+            <div class="container-fluid best-best">
+                <div class="row">
+                    <div class="seven">
+                        <h1>Best 작품</h1>
+                    </div>
+                    <div class="col-lg-6">
+                        <div id="header-carousel" class="carousel slide carousel-fade mb-30 mb-lg-0" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#header-carousel" data-slide-to="0" class="active"></li>
+                                <li data-target="#header-carousel" data-slide-to="1"></li>
+                                <li data-target="#header-carousel" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="carousel-item position-relative active" style="height: 430px;">
+                                    <img class="position-absolute w-100 h-100" src="{{ url_for('static', path='main_page/image/King.jpg') }}" style="object-fit: cover;">
+                                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                                        <div class="p-3" style="max-width: 800px;">
+                                            <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Men Fashion</h1>
+                                            <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Lorem rebum magna amet lorem magna erat diam stet. Sadips duo stet amet amet ndiam elitr ipsum diam</p>
+                                            <div class="button_container">
+                                                <button class="btn"><span>Shop Now</span></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item position-relative" style="height: 430px;">
+                                    <img class="position-absolute w-100 h-100" src="{{ url_for('static', path='main_page/image/yellow.jpg') }}" style="object-fit: cover;">
+                                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                                        <div class="p-3" style="max-width: 800px;">
+                                            <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Women Fashion</h1>
+                                            <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Lorem rebum magna amet lorem magna erat diam stet. Sadips duo stet amet amet ndiam elitr ipsum diam</p>
+                                            <div class="button_container">
+                                                <button class="btn"><span>Shop Now</span></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item position-relative" style="height: 430px;">
+                                    <img class="position-absolute w-100 h-100" src="{{ url_for('static', path='main_page/image/King.jpg') }}" style="object-fit: cover;">
+                                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                                        <div class="p-3" style="max-width: 800px;">
+                                            <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Kids Fashion</h1>
+                                            <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Lorem rebum magna amet lorem magna erat diam stet. Sadips duo stet amet amet ndiam elitr ipsum diam</p>
+                                            <div class="button_container">
+                                                <button class="btn"><span>Shop Now</span></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 position-area">
+                        <div class="right-content">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="right-first-image">
+                                        <div class="thumb">
+                                            <div class="inner-content">
+                                                <h4>Women</h4>
+                                                <span>Best Clothes For Women</span>
+                                            </div>
+                                            <img src="{{ url_for('static', path='main_page/image/King.jpg') }}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="right-first-image">
+                                        <div class="thumb">
+                                            <div class="inner-content">
+                                                <h4>Men</h4>
+                                                <span>Best Clothes For Men</span>
+                                            </div>
+                                            <img src="{{ url_for('static', path='main_page/image/yellow.jpg') }}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="right-first-image">
+                                        <div class="thumb">
+                                            <div class="inner-content">
+                                                <h4>Kids</h4>
+                                                <span>Best Clothes For Kids</span>
+                                            </div>
+                                            <img src="{{ url_for('static', path='main_page/image/ZoeDubus.png') }}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="right-first-image">
+                                        <div class="thumb">
+                                            <div class="inner-content">
+                                                <h4>Accessories</h4>
+                                                <span>Best Trend Accessories</span>
+                                            </div>
+                                            <img src="{{ url_for('static', path='main_page/image/Life_sing.jpg') }}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ***** Main Banner Area End ***** -->
+        <!-- ***** Men Area Starts ***** -->
+        <div class="best_picture">
+            <div class="seven">
+                <h1>Best 감성별 작품</h1>
+            </div>
+            <div class="slider3 display-flex">
+                <div class="slides3">
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/박환-고요.png') }}" alt="Image 2-1">
+                        <span>#정적 #고요 #녹색</span>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/오순이-내 마음의 풍경.jpg') }}" alt="Image 2-2">
+                        <span>#고요 #검정색</span>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/임경식-꿈을 꾸다.png') }}" alt="Image 2-3">
+                        <span>#희망 #기쁨 #파란색</span>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/박환-고요.png') }}" alt="Image 2-4">
+                        <span>#집중 #노란색</span>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/p1.png') }}" alt="Image 2-5">
+                        <span>#정적 #고요 #녹색</span>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/p2.png') }}" alt="Image 2-6">
+                        <span>#고요 #검정색</span>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/p3.png') }}" alt="Image 2-7">
+                        <span>#희망 #기쁨 #파란색</span>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/p4.png') }}" alt="Image 2-8">
+                        <span>#집중 #노란색</span>
+                    </div>
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function () {
+                            const slider3 = document.querySelector('.slides3');
+                            let currentIndex = 0;
+                            const slideCount = slider3.children.length;
+                            const slideWidth = 500; // 슬라이더의 너비를 맞춰주세요.
+                            let moveCount = 0;
+                            const maxMoveCount = 2; // 세 번만 움직이도록 설정
+
+                            const moveSlider = function () {
+                                if (moveCount < maxMoveCount) {
+                                    currentIndex = (currentIndex + 1) % slideCount;
+                                } else {
+                                    currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+                                }
+
+                                slider3.style.transition = "transform 1s";
+                                slider3.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+                                moveCount++;
+
+                                if (moveCount === maxMoveCount * 2) {
+                                    // 두 번 이동 후 currentIndex를 0으로 재설정
+                                    setTimeout(() => {
+                                        slider3.style.transition = "none";
+                                        currentIndex = 0;
+                                        moveCount = 0;
+                                        slider3.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+                                    }, 1000); // 1초 대기 후 재시작 (원하는 대기 시간으로 조절 가능)
+                                }
+                            };
+
+                            let sliderInterval = setInterval(moveSlider, 4000);
+                        });
+                    </script>
+                </div>
+            </div>
+
+            <div class="slider4 display-flex">
+                <div class="slides4">
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/그림1.png') }}" alt="Image 3-1">
+                        <span>#희망 #기쁨 #파란색</span>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/그림2.png') }}" alt="Image 3-2">
+                        <span>#고요 #검정색</span>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/그림3.png') }}" alt="Image 3-3">
+                        <span>#정적 #고요 #녹색</span>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/그림4.png') }}" alt="Image 3-4">
+                        <span>#집중 #노란색</span>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/그림5.png') }}" alt="Image 3-5">
+                        <span>#희망 #기쁨 #파란색</span>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/그림6.png') }}" alt="Image 3-6">
+                        <span>#고요 #검정색</span>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/그림7.png') }}" alt="Image 3-7">
+                        <span>#정적 #고요 #녹색</span>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/그림8.png') }}" alt="Image 3-8">
+                        <span>#집중 #노란색</span>
+                    </div>
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function () {
+                            const slider4 = document.querySelector('.slides4');
+                            let currentIndex = 2;
+                            const slideCount = slider4.children.length;
+                            const slideWidth = 500; // 슬라이더의 너비를 맞춰주세요.
+                            let moveCount = 0;
+                            const maxMoveCount = 2; // 두 번만 움직이도록 설정
+
+                            // 초기 위치로 이동
+                            slider4.style.transition = "none";
+                            slider4.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+
+                            const moveSlider = function () {
+                                if (moveCount < maxMoveCount) {
+                                    currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+                                } else {
+                                    currentIndex = (currentIndex + 1) % slideCount;
+                                }
+
+                                slider4.style.transition = "transform 1s";
+                                slider4.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+                                moveCount++;
+
+                                if (moveCount === maxMoveCount * 2) {
+                                    // 두 번 이동 후 currentIndex를 0으로 재설정
+                                    setTimeout(() => {
+                                        slider4.style.transition = "none";
+                                        currentIndex = 2;
+                                        moveCount = 0;
+                                        slider4.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+                                    }, 1000); // 1초 대기 후 재시작 (원하는 대기 시간으로 조절 가능)
+                                }
+                            };
+
+                            let sliderInterval = setInterval(moveSlider, 4000);
+                        });
+                    </script>
+                </div>
+            </div>
+
+
+            <div class="slider5 display-flex">
+                <div class="slides5">
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/박환-고요.png') }}" alt="Image 2-1">
+                        <span>#정적 #고요 #녹색</span>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/오순이-내 마음의 풍경.jpg') }}" alt="Image 2-2">
+                        <span>#고요 #검정색</span>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/임경식-꿈을 꾸다.png') }}" alt="Image 2-3">
+                        <span>#희망 #기쁨 #파란색</span>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/무릉도원_방두영.png') }}" alt="Image 2-4">
+                        <span>#집중 #노란색</span>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/p1.png') }}" alt="Image 2-5">
+                        <span>#정적 #고요 #녹색</span>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/p2.png') }}" alt="Image 2-6">
+                        <span>#고요 #검정색</span>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/p3.png') }}" alt="Image 2-7">
+                        <span>#희망 #기쁨 #파란색</span>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/p4.png') }}" alt="Image 2-8">
+                        <span>#집중 #노란색</span>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/그림1.png') }}" alt="Image 3-1">
+                        <span>#희망 #기쁨 #파란색</span>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/그림2.png') }}" alt="Image 3-2">
+                        <span>#고요 #검정색</span>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/그림3.png') }}" alt="Image 3-3">
+                        <span>#정적 #고요 #녹색</span>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/그림4.png') }}" alt="Image 3-4">
+                        <span>#집중 #노란색</span>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/그림5.png') }}" alt="Image 3-5">
+                        <span>#희망 #기쁨 #파란색</span>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/그림6.png') }}" alt="Image 3-6">
+                        <span>#고요 #검정색</span>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/그림7.png') }}" alt="Image 3-7">
+                        <span>#정적 #고요 #녹색</span>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/그림8.png') }}" alt="Image 3-8">
+                        <span>#집중 #노란색</span>
+                    </div>
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function () {
+                            const slider5 = document.querySelector('.slides5');
+                            let currentIndex = 0;
+                            const slideCount = slider5.children.length;
+                            const slideWidth = 760; // 슬라이더의 너비를 맞춰주세요.
+                            let moveCount = 0;
+                            const maxMoveCount = 3; // 세 번만 움직이도록 설정
+
+                            const moveSlider = function () {
+                                if (moveCount < maxMoveCount) {
+                                    currentIndex = (currentIndex + 1) % slideCount;
+                                } else {
+                                    currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+                                }
+
+                                slider5.style.transition = "transform 1s";
+                                slider5.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+                                moveCount++;
+
+                                if (moveCount === maxMoveCount * 2) {
+                                    // 두 번 이동 후 currentIndex를 0으로 재설정
+                                    setTimeout(() => {
+                                        slider5.style.transition = "none";
+                                        currentIndex = 0;
+                                        moveCount = 0;
+                                        slider5.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+                                    }, 1000); // 1초 대기 후 재시작 (원하는 대기 시간으로 조절 가능)
+                                }
+                            };
+
+                            let sliderInterval = setInterval(moveSlider, 4000);
+                        });
+                    </script>
+                </div>
+            </div>
+
+
+
+
+            <div class="slider6 display-flex">
+                <div class="slides6">
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/박환-고요.png') }}" alt="Image 2-1">
+                        <span>#정적 #고요 #녹색</span>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/오순이-내 마음의 풍경.jpg') }}" alt="Image 2-2">
+                        <span>#고요 #검정색</span>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/임경식-꿈을 꾸다.png') }}" alt="Image 2-3">
+                        <span>#희망 #기쁨 #파란색</span>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/무릉도원_방두영.jpg') }}" alt="Image 2-4">
+                        <span>#집중 #노란색</span>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/p1.png') }}" alt="Image 2-5">
+                        <span>#정적 #고요 #녹색</span>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/p2.png') }}" alt="Image 2-6">
+                        <span>#고요 #검정색</span>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/p3.png') }}" alt="Image 2-7">
+                        <span>#희망 #기쁨 #파란색</span>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/p4.png') }}" alt="Image 2-8">
+                        <span>#집중 #노란색</span>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/그림1.png') }}" alt="Image 3-1">
+                        <span>#희망 #기쁨 #파란색</span>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/그림2.png') }}" alt="Image 3-2">
+                        <span>#고요 #검정색</span>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/그림3.png') }}" alt="Image 3-3">
+                        <span>#정적 #고요 #녹색</span>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/그림4.png') }}" alt="Image 3-4">
+                        <span>#집중 #노란색</span>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/그림5.png') }}" alt="Image 3-5">
+                        <span>#희망 #기쁨 #파란색</span>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/그림6.png') }}" alt="Image 3-6">
+                        <span>#고요 #검정색</span>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/그림7.png') }}" alt="Image 3-7">
+                        <span>#정적 #고요 #녹색</span>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', path='main_page/image/그림8.png') }}" alt="Image 3-8">
+                        <span>#집중 #노란색</span>
+                    </div>
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function () {
+                            const slider6 = document.querySelector('.slides6');
+                            let currentIndex = 0;
+                            const slideCount = slider6.children.length;
+                            const slideWidth = 400; // 슬라이더의 너비를 맞춰주세요.
+                            let moveCount = 0;
+                            const maxMoveCount = 5; // 세 번만 움직이도록 설정
+
+                            const moveSlider = function () {
+                                if (moveCount < maxMoveCount) {
+                                    currentIndex = (currentIndex + 1) % slideCount;
+                                } else {
+                                    currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+                                }
+
+                                slider6.style.transition = "transform 1s";
+                                slider6.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+                                moveCount++;
+
+                                if (moveCount === maxMoveCount * 2) {
+                                    // 두 번 이동 후 currentIndex를 0으로 재설정
+                                    setTimeout(() => {
+                                        slider6.style.transition = "none";
+                                        currentIndex = 0;
+                                        moveCount = 0;
+                                        slider6.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+                                    }, 1000); // 1초 대기 후 재시작 (원하는 대기 시간으로 조절 가능)
+                                }
+                            };
+
+                            let sliderInterval = setInterval(moveSlider, 4000);
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+        <!-- Best Review -->
+        <!--<hr class="mood_line" style="border-width: 1px; border-color: black; border-style: solid">-->
+
+        <div class="seven">
+            <h1>커뮤니티 공간</h1>
+        </div>
+
+        <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
+            <div class="testimonial-item bg-light rounded p-5">
+                <p class="fs-5"><img class="review-img" src="{{ url_for('static', path='main_page/image/리뷰3.jpg') }}"></p>
+                <div class="d-flex align-items-center bg-white me-n5" style="border-radius: 50px 0 0 50px;">
+                    <img class="img-fluid flex-shrink-0 rounded-circle" src="{{ url_for('static', path='main_page/image/RestArt.png') }}" style="width: 90px; height: 90px;">
+                    <div class="ps-3">
+                        <h3 class="mb-1">Client Name</h3>
+                        <span>Profession</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-item bg-light rounded p-5">
+                <p class="fs-5"><img class="review-img" src="{{ url_for('static', path='main_page/image/리뷰2.jpg') }}"></p>
+                <div class="d-flex align-items-center bg-white me-n5" style="border-radius: 50px 0 0 50px;">
+                    <img class="img-fluid flex-shrink-0 rounded-circle" src="{{ url_for('static', path='main_page/image/RestArt.png') }}" style="width: 90px; height: 90px;">
+                    <div class="ps-3">
+                        <h3 class="mb-1">Client Name</h3>
+                        <span>Profession</span>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-item bg-light rounded p-5">
+                <p class="fs-5"><img class="review-img" src="{{ url_for('static', path='main_page/image/리뷰1.jpg') }}"></p>
+                <div class="d-flex align-items-center bg-white me-n5" style="border-radius: 50px 0 0 50px;">
+                    <img class="img-fluid flex-shrink-0 rounded-circle" src="{{ url_for('static', path='main_page/image/RestArt.png') }}" style="width: 90px; height: 90px;">
+                    <div class="ps-3">
+                        <h3 class="mb-1">Client Name</h3>
+                        <span>Profession</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="/artist-registry/" class="function_banner">
+        <section id="artist_registry_section">
+            <div class="artist_registry_block">
+                <div class="artist_registry_txt">
+                    <p>RestArt<br class="visible_tab"> AI작품 추천</p>
+                    <span>작가 공모 방법 안내</span>
+                    <div>작가 공모<i class="icon fa-arrow-right"></i></div>
+                </div>
+            </div>
+        </section>
+    </a>
+    <a href="/serviceforbiz/" onclick="gaClickHome('banner_biz_190208');" class="function_banner">
+        <section id="sfb_section">
+            <div class="sfb_block">
+                <div class="sfb_txt">
+                    <p>RestArt의 <br class="visible_tab">메타버스 세상</p>
+                    <span>작품 좋아요 및 공유</span>
+                    <div>이동하기<i class="icon fa-arrow-right"></i></div>
+                </div>
+            </div>
+        </section>
+    </a>
+    <a href="/theme/" onclick="gaClickHome('banner_theme_190208');" class="function_banner">
+        <section id="theme_section">
+            <div class="theme_block">
+                <div class="theme_txt">
+                    <p>RestArt의<br class="visible_tab"> AR 기술</p>
+                    <span>간편하게 인테리어에 어울리는 그림찾기</span>
+                    <div>이동하기<i class="icon fa-arrow-right"></i></div>
+                </div>
+            </div>
+        </section>
+    </a>
+
+    <script src="{{ url_for('static', path='main_page/js/bootstrap.bundle.min.js') }}"></script>
+    <!-- jQuery -->
+    <script src="{{ url_for('static', path='main_page/js/jquery-2.1.0.min.js') }}"></script>
+
+    <!-- Bootstrap -->
+    <script src="{{ url_for('static', path='main_page/js/popper.js') }}"></script>
+    <script src="{{ url_for('static', path='main_page/js/bootstrap.min.js') }}"></script>
+
+    <!-- Plugins -->
+    <script src="{{ url_for('static', path='main_page/js/owl-carousel.js') }}"></script>
+    <script src="{{ url_for('static', path='main_page/js/accordions.js') }}"></script>
+    <script src="{{ url_for('static', path='main_page/js/datepicker.js') }}"></script>
+    <script src="{{ url_for('static', path='main_page/js/scrollreveal.min.js') }}"></script>
+    <script src="{{ url_for('static', path='main_page/js/waypoints.min.js') }}"></script>
+    <script src="{{ url_for('static', path='main_page/js/jquery.counterup.min.js') }}"></script>
+    <script src="{{ url_for('static', path='main_page/js/imgfix.min.js') }}"></script>
+    <script src="{{ url_for('static', path='main_page/js/slick.js') }}"></script>
+    <script src="{{ url_for('static', path='main_page/js/lightbox.js') }}"></script>
+    <script src="{{ url_for('static', path='main_page/js/isotope.js') }}"></script>
+
+    <!-- Global Init -->
+    <script src="{{ url_for('static', path='main_page/js/custom.js') }}"></script>
+
+
+    <script>
+        $(function () {
+            var selectedClass = "";
+            $("p").click(function () {
+                selectedClass = $(this).attr("data-rel");
+                $("#portfolio").fadeTo(50, 0.1);
+                $("#portfolio div").not("." + selectedClass).fadeOut();
+                setTimeout(function () {
+                    $("." + selectedClass).fadeIn();
+                    $("#portfolio").fadeTo(50, 1);
+                }, 500);
+
+            });
+        });
+
+    </script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', path='main_page/js/wow.min.js') }}"></script>
+    <script src="{{ url_for('static', path='main_page/js/easing.min.js') }}"></script>
+    <script src="{{ url_for('static', path='main_page/js/waypoints.min.js') }}"></script>
+    <script src="{{ url_for('static', path='main_page/js/owl.carousel.min.js') }}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{{ url_for('static', path='main_page/js/main.js') }}"></script>
+
+</body>
+</html>

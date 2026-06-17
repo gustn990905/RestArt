@@ -73,3 +73,7 @@ UserSettings/
 .vs/
 *.csproj
 *.sln
+
+# FastAPI web prototype generated files
+apps/fastapi-web-prototype/static/uploads/
+apps/fastapi-web-prototype/static/results/
