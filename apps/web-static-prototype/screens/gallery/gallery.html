@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Site Metas -->
+    <title>RestArt gallery</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/nav_css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/nav_css/style.css" rel="stylesheet">
+    <link href="css/nav_css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/nav_css/nav_top3.css" rel="stylesheet">
+
+    <!-- Responsive styles for this template -->
+    <link href="css/nav_css/responsive.css" rel="stylesheet">
+
+    <!-- Colors for this template -->
+    <link href="css/nav_css/colors.css" rel="stylesheet">
+    <link href="css/gallery.css" rel="stylesheet">
+
+    <link href="css/gallery2.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/custom-styles.css" rel="stylesheet">
+    <link href="css/prettyPhoto.css" rel="stylesheet">
+    <link href="css/bootstrap2.css" rel="stylesheet">
+
+<body>
+    <div id="nav_wrapper">
+        <div class="topbar-section">
+            <div class="container-fluid">
+                <div class="row2 align-items-center justify-content-end"> <!-- Flexbox를 사용해 요소를 오른쪽에 정렬 -->
+                    <div id="search-ranking" class="col-auto"> <!-- 실시간 검색어 -->
+                        <h2 class="blind">실시간 검색어</h2>
+                        <div class="current-rank">
+                            <span class="rank-number">1</span>
+                            <span class="rank-title">김현수</span>
+                        </div>
+                        <ul>
+                            <li>
+                                <span class="rank-number">1</span>
+                                <span class="rank-title">김현수</span>
+                            </li>
+                            <li>
+                                <span class="rank-number">2</span>
+                                <span class="rank-title">이민혁</span>
+                            </li>
+                            <li>
+                                <span class="rank-number">3</span>
+                                <span class="rank-title">이상준</span>
+                            </li>
+                            <li>
+                                <span class="rank-number">4</span>
+                                <span class="rank-title">이지원</span>
+                            </li>
+                            <li>
+                                <span class="rank-number">5</span>
+                                <span class="rank-title">이윤호</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-auto"> <!-- 검색 아이콘 -->
+                        <input type="text" id="searchInput" class="form-control topsearch text-right" style="display: none;" placeholder="검색하기">
+                        <i class="fa fa-search" id="searchIcon"></i>
+                    </div>
+                    <script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        const searchInput = document.getElementById('searchInput');
+                        const searchIcon = document.getElementById('searchIcon');
+
+                        searchIcon.addEventListener('click', function() {
+                            if (searchInput.style.display === "block") {
+                                if (searchInput.value.trim() !== "") {
+                                    performSearch(searchInput.value); // 검색 실행
+                                }
+                            } else {
+                                searchInput.style.display = "block"; // 검색창 표시
+                                searchInput.focus(); // 포커스를 검색창에 둠
+                            }
+                        });
+
+                        searchInput.addEventListener('keypress', function(event) {
+                            if (event.key === "Enter") {
+                                performSearch(searchInput.value);
+                            }
+                        });
+
+                        function performSearch(query) {
+                            console.log("검색어: ", query); // 실제 구현에서는 검색 결과 페이지로 리다이렉트 등의 로직 추가
+                            // 예: window.location.href = '/search?query=' + encodeURIComponent(query);
+                        }
+
+                        // 추가된 부분: 문서를 클릭할 때 검색창 밖을 클릭하면 검색창을 숨김
+                        document.addEventListener('click', function(event) {
+                            const isClickInside = searchInput.contains(event.target) || searchIcon.contains(event.target);
+
+                            if (!isClickInside) {
+                                searchInput.style.display = "none"; // 검색창 숨김
+                            }
+                        });
+                    });
+                    </script>
+
+                </div>
+            </div>
+
+        </div><!-- end topbar -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+            const currentRank = document.querySelector("#search-ranking .current-rank");
+            const rankItems = document.querySelectorAll("#search-ranking ul li");
+
+            let currentIndex = 0;
+
+            function showNextRank() {
+                if (rankItems.length === 0) return; // 순위 목록이 비어있으면 아무것도 하지 않음
+
+                currentIndex = (currentIndex + 1) % rankItems.length; // 다음 순위로 이동
+                const rankItem = rankItems[currentIndex];
+
+                // 현재 순위를 업데이트
+                currentRank.innerHTML = `
+                    <span class="rank-number">${rankItem.querySelector('.rank-number').textContent}</span>
+                    <span class="rank-title">${rankItem.querySelector('.rank-title').textContent}</span>
+                `;
+            }
+            setInterval(showNextRank, 3000); // 2초마다 순위를 갱신
+        });
+        </script>
+
+        <div class="header-section">
+            <div class="container">
+                <div class="row2">
+                    <div class="col-md-12">
+                        <div class="logo">
+                            <a href="index.html"><img class="logo_img" src="image/nav_img/RestArt.png" alt=""></a>
+                        </div><!-- end logo -->
+                    </div>
+                </div><!-- end row -->
+            </div><!-- end header-logo -->
+        </div><!-- end header -->
+
+        <header class="header">
+            <div class="container">
+                <nav class="navbar navbar-inverse navbar-toggleable-md">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#cloapediamenu" aria-controls="cloapediamenu" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-md-center" id="cloapediamenu">
+                        <ul class="navbar-nav">
+                            <li class="nav-item dropdown has-submenu">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">작가</a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdown02">
+                                    <li><a class="dropdown-item" href="blog-author.html">작가 소개</a></li>
+                                    <li><a class="dropdown-item" href="page-contact.html">작품 등록</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown has-submenu">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">작품 보러가기</a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdown02">
+                                    <li><a class="dropdown-item" href="blog-author.html">갤러리</a></li>
+                                    <li><a class="dropdown-item" href="page-contact.html">온라인 전시</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown has-submenu">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">AI 작품 추천</a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdown02">
+                                    <li><a class="dropdown-item" href="blog-author.html">풍수지리</a></li>
+                                    <li><a class="dropdown-item" href="page-contact.html">AI 작품 추천</a></li>
+                                    <li><a class="dropdown-item" href="page.html">AR 인테리어</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown has-submenu">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">커뮤니티</a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdown02">
+                                    <li><a class="dropdown-item" href="blog-author.html">전시 정보</a></li>
+                                    <li><a class="dropdown-item" href="page-contact.html">인테리어 공유</a></li>
+                                    <li><a class="dropdown-item" href="page.html">리뷰</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link color-skyblue-hover" href="blog-category-03.html">아트컨설팅</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link color-skyblue-hover" href="blog-category-04.html">회사소개</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link color-skyblue-hover" href="blog-category-04.html">로그인</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div><!-- end container -->
+        </header><!-- end header -->
+
+    </div><!-- end wrapper -->
+
+    <section id="discover_filter">
+    <div id="ds-filter-container-pc" class="cf">
+        <div class="ds-filter-item">
+            <div class="ds-filter-title">테마</div>
+            <div class="ds-filter-tags cf">
+                <div class="ds-filter-tag-theme">
+                    <input type="radio" name="artType" id="classicRadio" value="classic">
+                    <label for="classicRadio">고전</label>
+                </div>
+                <div class="ds-filter-tag-theme">
+                    <input type="radio" name="artType" id="modernRadio" value="modern">
+                    <label for="modernRadio">현대</label>
+                </div>
+                <div class="ds-filter-tag-theme checkbox-group" id="checkboxGroup">
+                    <ul class="checkbox1">
+                        <li>
+                            <div><input type="checkbox" name="category11" value="추상">추상</div>
+                            <div><input type="checkbox" name="category12" value="인물">인물</div>
+                            <div><input type="checkbox" name="category13" value="풍경">풍경</div>
+                            <div><input type="checkbox" name="category14" value="구상">구상</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    const classicRadio = document.getElementById("classicRadio");
+                    const modernRadio = document.getElementById("modernRadio");
+                    const checkboxGroup = document.getElementById("checkboxGroup");
+
+                    function updateCheckboxGroupVisibility() {
+                        checkboxGroup.style.display = classicRadio.checked || modernRadio.checked ? "block" : "none";
+                    }
+
+                    classicRadio.addEventListener("change", updateCheckboxGroupVisibility);
+                    modernRadio.addEventListener("change", updateCheckboxGroupVisibility);
+                });
+            </script>
+        </div>
+
+        <div class="ds-filter-item">
+            <div class="ds-filter-title">색상</div>
+                <div class="ds-filter-tags cf">
+                    <div class="ds-filter-tag-color">
+                        <input type="color" id="colorPicker" value="#000000">
+                        <div id="selectedColor"></div>
+                        <button id="completeButton" style="display: none;">색상 선택 완료</button>
+                        <div id="rgbValue"></div>
+
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function () {
+                                const colorPicker = document.getElementById("colorPicker");
+                                const selectedColor = document.getElementById("selectedColor");
+                                const completeButton = document.getElementById("completeButton");
+                                const rgbValue = document.getElementById("rgbValue");
+
+                                const initialColor = colorPicker.value;
+                                selectedColor.style.backgroundColor = initialColor;
+
+                                colorPicker.addEventListener("input", function () {
+                                    const chosenColor = colorPicker.value;
+                                    selectedColor.style.backgroundColor = chosenColor;
+                                    completeButton.style.display = "block";
+                                });
+
+                                completeButton.addEventListener("click", function () {
+                                    const chosenColor = colorPicker.value;
+                                    const rgbArray = hexToRgb(chosenColor);
+                                    const rgbString = `-> RGB 값: ${rgbArray.r}, ${rgbArray.g}, ${rgbArray.b}`;
+                                    rgbValue.textContent = rgbString;
+                                });
+
+                                function hexToRgb(hex) {
+                                    const bigint = parseInt(hex.substring(1), 16);
+                                    const r = (bigint >> 16) & 255;
+                                    const g = (bigint >> 8) & 255;
+                                    const b = bigint & 255;
+                                    return { r, g, b };
+                                }
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+        <div class="ds-filter-item size">
+            <div class="ds-filter-title">
+                사이즈
+                <div class="ds-filter-fold-btn"></div>
+            </div>
+            <div class="ds-filter-tags">
+                <div class="ds-filter-tag-size">
+                        <button class="size_button" type="button" onclick="location.href='http://taeyoonart.com/xe/board_fineart_data/2541';">사이즈 표 확인하기</button>
+        <select id="selectFloor">
+            <!-- 호수 옵션들을 동적으로 추가할 예정 -->
+        </select>
+
+        <p id="selectedFloor"></p>
+
+        <script>
+            const selectFloor = document.getElementById("selectFloor");
+            const selectedFloor = document.getElementById("selectedFloor");
+
+            // 고정된 호수 옵션 추가
+            const fixedFloors = [0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 15, 20, 25, 30, 40, 50, 60, 80, 100, 120, 150, 200, 300, 500];
+
+            fixedFloors.forEach(floor => {
+                const option = document.createElement("option");
+                option.value = floor;
+                option.text = `${floor}호`;
+                selectFloor.add(option);
+            });
+
+        </script>
+                </div>
+
+            </div>
+        </div>
+        <div class="ds-filter-item shape">
+            <div class="ds-filter-title">감성</div>
+            <div class="ds-filter-tags">
+                <div class="ds-filter-tag-shape">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-shape-1" name="f_o" data-context="정사각형" value="3">
+                    <label for="ds-filter-shape-1">행복</label>
+                </div>
+                <div class="ds-filter-tag-shape">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-shape-2" name="f_o" data-context="가로형" value="1">
+                    <label for="ds-filter-shape-2">기쁨</label>
+                </div>
+                <div class="ds-filter-tag-shape">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-shape-3" name="f_o" data-context="세로형" value="2">
+                    <label for="ds-filter-shape-3">파워</label>
+                </div>
+                <div class="ds-filter-tag-shape">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-shape-4" name="f_o" data-context="가변" value="4">
+                    <label for="ds-filter-shape-4">열정</label>
+                </div>
+                <div class="ds-filter-tag-shape">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-shape-5" name="f_o" data-context="가변" value="4">
+                    <label for="ds-filter-shape-5">럭셔리</label>
+                </div>
+                <div class="ds-filter-tag-shape">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-shape-6" name="f_o" data-context="가변" value="4">
+                    <label for="ds-filter-shape-6">시원</label>
+                </div>
+                <div class="ds-filter-tag-shape">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-shape-7" name="f_o" data-context="가변" value="4">
+                    <label for="ds-filter-shape-7">차분</label>
+                </div>
+                <div class="ds-filter-tag-shape">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-shape-8" name="f_o" data-context="가변" value="4">
+                    <label for="ds-filter-shape-8">고무적</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="ds-filter-item technique">
+            <div class="ds-filter-title">기법</div>
+            <div class="ds-filter-tags">
+                <div class="ds-filter-tag-technique">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-technique-1" name="f_o" data-context="정사각형" value="3">
+                    <label for="ds-filter-shape-1">판화</label>
+                </div>
+                <div class="ds-filter-tag-technique">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-technique-2" name="f_o" data-context="가로형" value="1">
+                    <label for="ds-filter-technique-2">점묘법</label>
+                </div>
+                <div class="ds-filter-tag-technique">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-technique-3" name="f_o" data-context="세로형" value="2">
+                    <label for="ds-filter-technique-3">선묘법</label>
+                </div>
+                <div class="ds-filter-tag-technique">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-technique-4" name="f_o" data-context="가변" value="4">
+                    <label for="ds-filter-technique-4">드라이</label>
+                </div>
+                <div class="ds-filter-tag-technique">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-technique-5" name="f_o" data-context="가변" value="4">
+                    <label for="ds-filter-technique-5">수채화</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="ds-filter-item author">
+            <div class="ds-filter-title">작가 이름</div>
+            <div class="ds-filter-tags">
+                <div class="ds-filter-tag-author">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-author-1" name="f_o" data-context="정사각형" value="3">
+                    <label for="ds-filter-author-1">이름</label>
+                </div>
+                <div class="ds-filter-tag-technique">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-author-2" name="f_o" data-context="가로형" value="1">
+                    <label for="ds-filter-author-2">이름</label>
+                </div>
+                <div class="ds-filter-tag-technique">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-author-3" name="f_o" data-context="세로형" value="2">
+                    <label for="ds-filter-author-3">이름</label>
+                </div>
+                <div class="ds-filter-tag-technique">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-author-4" name="f_o" data-context="가변" value="4">
+                    <label for="ds-filter-author-4">이름</label>
+                </div>
+                <div class="ds-filter-tag-technique">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-author-5" name="f_o" data-context="가변" value="4">
+                    <label for="ds-filter-author-5">이름</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="ds-filter-item price">
+            <div class="ds-filter-title">구매 가격</div>
+            <div class="ds-filter-tags">
+                <div class="ds-filter-tag-price">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-price-1" name="f_p" data-context="~30만원" value="1">
+                    <label for="ds-filter-price-1">~ 30만원</label>
+                </div>
+                <div class="ds-filter-tag-price">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-price-2" name="f_p" data-context="30만~50만원" value="2">
+                    <label for="ds-filter-price-2">30만 ~ 50만원</label>
+                </div>
+                <div class="ds-filter-tag-price">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-price-3" name="f_p" data-context="50만~100만원" value="3">
+                    <label for="ds-filter-price-3">50만 ~ 100만원</label>
+                </div>
+                <div class="ds-filter-tag-price">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-price-4" name="f_p" data-context="100만~200만원" value="4">
+                    <label for="ds-filter-price-4">100만 ~ 200만원</label>
+                </div>
+                <div class="ds-filter-tag-price">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-price-5" name="f_p" data-context="200만~300만원" value="5">
+                    <label for="ds-filter-price-5">200만 ~ 300만원</label>
+                </div>
+                <div class="ds-filter-tag-price">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-price-6" name="f_p" data-context="300만~500만원" value="6">
+                    <label for="ds-filter-price-6">300만 ~ 500만원</label>
+                </div>
+                <div class="ds-filter-tag-price">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-price-7" name="f_p" data-context="500만~1,000만원" value="7">
+                    <label for="ds-filter-price-7">500만 ~ </label>
+                </div>
+                <div id="slider-container">
+                    <div id="slider">
+                        <div class="tick" style="left: 0%;"></div>
+                        <div class="tick-label" style="left: 0%;">0</div>
+
+                        <div class="tick" style="left: 25%;"></div>
+                        <div class="tick-label" style="left: 25%;">125</div>
+
+                        <div class="tick" style="left: 50%;"></div>
+                        <div class="tick-label" style="left: 50%;">250</div>
+
+                        <div class="tick" style="left: 75%;"></div>
+                        <div class="tick-label" style="left: 75%;">375</div>
+
+                        <div class="tick" style="left: 100%;"></div>
+                        <div class="tick-label" style="left: 100%;">500</div>
+
+                        <div id="knob"></div>
+                    </div>
+                    <div id="slider-label">0</div>
+                </div>
+                <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                        const slider = document.getElementById("slider");
+                        const knob = document.getElementById("knob");
+                        const sliderLabel = document.getElementById("slider-label");
+
+                        let isDragging = false;
+
+                        knob.addEventListener("mousedown", function (event) {
+                            isDragging = true;
+                        });
+
+                        document.addEventListener("mousemove", function (event) {
+                            if (isDragging) {
+                                event.preventDefault(); // 스크롤 효과 방지
+                                const sliderRect = slider.getBoundingClientRect();
+                                let position = (event.clientX - sliderRect.left) / sliderRect.width;
+
+                                position = Math.min(1, Math.max(0, position));
+                                const value = Math.round(position * 500);
+
+                                knob.style.left = `${position * 100}%`;
+                                sliderLabel.textContent = `${value}만원`;
+                                sliderLabel.style.left = `${position * 100}%`;
+
+                                // 색상 변경
+                                slider.style.background = `linear-gradient(to right, #FEEBCD 0%, #FEEBCD ${(position * 100)}%, #FEEBCD ${(position * 100)}%, #ddd ${position * 100}%)`;
+                            }
+                        });
+
+                        document.addEventListener("mouseup", function () {
+                            isDragging = false;
+                        });
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+    <div id="ds-filter-container-mobile" class="cf">
+        <div class="ds-filter-header cf">
+            <div class="ds-filter-title active" data-index="1">테마</div>
+            <div class="ds-filter-title" data-index="2">색상</div>
+            <div class="ds-filter-title" data-index="3">사이즈</div>
+            <div class="ds-filter-title" data-index="4">감성</div>
+            <div class="ds-filter-title" data-index="5">기법</div>
+            <div class="ds-filter-title" data-index="6">작가 이름</div>
+            <div class="ds-filter-title" data-index="7">구매 가격</div>
+        </div>
+
+        <div class="ds-filter-content">
+            <div class="ds-filter-tags cf active" data-index="1">
+                <div class="ds-filter-tag-theme">
+                    <input type="radio" class="ds-filter-tag-bt-checkbox" id="classicRadio1" name="artType" data-context="고전" value="classic">
+                    <label for="classicRadio1">고전</label>
+                </div>
+                <div class="ds-filter-tag-theme">
+                    <input type="radio" class="ds-filter-tag-bt-checkbox" id="modernRadio1" name="artType" data-context="현대" value="modern">
+                    <label for="modernRadio1">현대</label>
+                </div>
+                <div class="ds-filter-tag-theme checkbox-group" id="checkboxGroup1">
+                    <ul class="checkbox1">
+                        <li>
+                            <div><input type="checkbox" name="category11-1" value="추상">추상</div>
+                            <div><input type="checkbox" name="category12-1" value="인물">인물</div>
+                            <div><input type="checkbox" name="category13-1" value="풍경">풍경</div>
+                            <div><input type="checkbox" name="category14-1" value="구상">구상</div>
+                        </li>
+                    </ul>
+                </div>
+                <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    const classicRadio1 = document.getElementById("classicRadio1");
+                    const modernRadio1 = document.getElementById("modernRadio1");
+                    const checkboxGroup1 = document.getElementById("checkboxGroup1");
+
+                    function updateCheckboxGroupVisibility() {
+                        checkboxGroup1.style.display = classicRadio1.checked || modernRadio1.checked ? "block" : "none";
+                    }
+
+                    classicRadio1.addEventListener("change", updateCheckboxGroupVisibility);
+                        modernRadio1.addEventListener("change", updateCheckboxGroupVisibility);
+                    });
+                </script>
+            </div>
+
+            <div class="ds-filter-tags cf" data-index="2">
+                <div class="ds-filter-tag-color">
+                    <input type="color" id="colorPicker1" value="#000000">
+                    <div id="selectedColor1"></div>
+                    <button id="completeButton1" style="display: none;">색상 선택 완료</button>
+                    <div id="rgbValue1"></div>
+
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function () {
+                            const colorPicker1 = document.getElementById("colorPicker1");
+                            const selectedColor1 = document.getElementById("selectedColor1");
+                            const completeButton1 = document.getElementById("completeButton1");
+                            const rgbValue1 = document.getElementById("rgbValue1");
+
+                            const initialColor = colorPicker1.value;
+                            selectedColor1.style.backgroundColor = initialColor;
+
+                            colorPicker1.addEventListener("input", function () {
+                                const chosenColor = colorPicker1.value;
+                                selectedColor1.style.backgroundColor = chosenColor;
+                                completeButton1.style.display = "block";
+                            });
+
+                            completeButton1.addEventListener("click", function () {
+                                const chosenColor = colorPicker1.value;
+                                const rgbArray = hexToRgb(chosenColor);
+                                const rgbString = `-> RGB 값: ${rgbArray.r}, ${rgbArray.g}, ${rgbArray.b}`;
+                                rgbValue1.textContent = rgbString;
+                            });
+
+                            function hexToRgb(hex) {
+                                const bigint = parseInt(hex.substring(1), 16);
+                                const r = (bigint >> 16) & 255;
+                                const g = (bigint >> 8) & 255;
+                                const b = bigint & 255;
+                                return { r, g, b };
+                            }
+                        });
+                    </script>
+                </div>
+
+            </div>
+
+            <div class="ds-filter-tags cf" data-index="3">
+                <div class="ds-filter-tag-size">
+                    <button class="size_button" type="button" onclick="location.href='http://taeyoonart.com/xe/board_fineart_data/2541';">사이즈 표 확인하기</button>
+                    <select id="selectFloor1">
+                        <!-- 호수 옵션들을 동적으로 추가할 예정 -->
+                    </select>
+                    <p id="selectedFloor1"></p>
+                    <script>
+                        const selectFloor1 = document.getElementById("selectFloor1");
+                        const selectedFloor1 = document.getElementById("selectedFloor1");
+
+                        // 고정된 호수 옵션 추가
+                        const fixedFloors1 = [0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 15, 20, 25, 30, 40, 50, 60, 80, 100, 120, 150, 200, 300, 500];
+
+                        fixedFloors1.forEach(floor => {
+                            const option = document.createElement("option");
+                            option.value = floor;
+                            option.text = `${floor}호`;
+                            selectFloor1.add(option);
+                        });
+                    </script>
+                </div>
+            </div>
+
+            <div class="ds-filter-tags cf" data-index="4">
+                <div class="ds-filter-tag-shape">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-m-shape-1" name="f_o" data-context="행복" value="1">
+                    <label for="ds-filter-shape-1">행복</label>
+                </div>
+                <div class="ds-filter-tag-shape">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-m-shape-2" name="f_o" data-context="기쁨" value="2">
+                    <label for="ds-filter-shape-2">기쁨</label>
+                </div>
+                <div class="ds-filter-tag-shape">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-m-shape-3" name="f_o" data-context="파워" value="3">
+                    <label for="ds-filter-shape-3">파워</label>
+                </div>
+                <div class="ds-filter-tag-shape">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-m-shape-4" name="f_o" data-context="고무적" value="4">
+                    <label for="ds-filter-shape-4">고무적</label>
+                </div>
+                <div class="ds-filter-tag-shape">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-m-shape-5" name="f_o" data-context="열정" value="5">
+                    <label for="ds-filter-shape-4">열정</label>
+                </div>
+                <div class="ds-filter-tag-shape">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-m-shape-6" name="f_o" data-context="럭셔리" value="6">
+                    <label for="ds-filter-shape-4">럭셔리</label>
+                </div>
+                <div class="ds-filter-tag-shape">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-m-shape-7" name="f_o" data-context="시원" value="7">
+                    <label for="ds-filter-shape-4">시원</label>
+                </div>
+                <div class="ds-filter-tag-shape">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-m-shape-8" name="f_o" data-context="차분" value="8">
+                    <label for="ds-filter-shape-4">차분</label>
+                </div>
+            </div>
+
+            <div class="ds-filter-tags cf" data-index="5">
+                <div class="ds-filter-tag-technique">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-m-technique-1" name="f_t" data-context="판화" value="1">
+                    <label for="ds-filter-m-technique-1">판화</label>
+                </div>
+                <div class="ds-filter-tag-technique">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-m-technique-2" name="f_t" data-context="점묘법" value="2">
+                    <label for="ds-filter-m-technique-2">점묘법</label>
+                </div>
+                <div class="ds-filter-tag-technique">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-m-technique-3" name="f_t" data-context="선묘법" value="3">
+                    <label for="ds-filter-m-technique-3">선묘법</label>
+                </div>
+                <div class="ds-filter-tag-technique">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-m-technique-4" name="f_t" data-context="드라이" value="4">
+                    <label for="ds-filter-m-technique-4">드라이</label>
+                </div>
+                <div class="ds-filter-tag-technique">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-m-technique-5" name="f_t" data-context="수채화" value="5">
+                    <label for="ds-filter-m-technique-5">수채화</label>
+                </div>
+            </div>
+
+            <div class="ds-filter-tags cf" data-index="6">
+                <div class="ds-filter-tag-author">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-m-author-1" name="f_t" data-context="이름" value="1">
+                    <label for="ds-filter-m-author-1">이름</label>
+                </div>
+                <div class="ds-filter-tag-author">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-m-author-2" name="f_t" data-context="이름" value="2">
+                    <label for="ds-filter-m-author-2">이름</label>
+                </div>
+                <div class="ds-filter-tag-author">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-m-author-3" name="f_t" data-context="이름" value="3">
+                    <label for="ds-filter-m-author-3">이름</label>
+                </div>
+                <div class="ds-filter-tag-author">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-m-author-4" name="f_t" data-context="이름" value="4">
+                    <label for="ds-filter-m-author-4">이름</label>
+                </div>
+                <div class="ds-filter-tag-author">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-m-author-5" name="f_t" data-context="이름" value="5">
+                    <label for="ds-filter-m-author-5">이름</label>
+                </div>
+                <div class="ds-filter-tag-author">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-m-author-6" name="f_t" data-context="이름" value="6">
+                    <label for="ds-filter-m-author-6">이름</label>
+                </div>
+                <div class="ds-filter-tag-author">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-m-author-7" name="f_t" data-context="이름" value="7">
+                    <label for="ds-filter-m-author-7">이름</label>
+                </div>
+                <div class="ds-filter-tag-author">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-m-author-8" name="f_t" data-context="이름" value="8">
+                    <label for="ds-filter-m-author-8">이름</label>
+                </div>
+            </div>
+
+            <div class="ds-filter-tags cf" data-index="7">
+                <div class="ds-filter-tag-price">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-m-price-1" name="f_t" data-context="~30만원" value="1">
+                    <label for="ds-filter-m-price-1">~ 30만원</label>
+                </div>
+                <div class="ds-filter-tag-price">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-m-price-2" name="f_t" data-context="30만~50만원" value="2">
+                    <label for="ds-filter-m-price-2">30만 ~ 50만원</label>
+                </div>
+                <div class="ds-filter-tag-price">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-m-price-3" name="f_t" data-context="50만~100만원" value="3">
+                    <label for="ds-filter-m-price-3">50만 ~ 100만원</label>
+                </div>
+                <div class="ds-filter-tag-price">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-m-price-4" name="f_t" data-context="100만~200만원" value="4">
+                    <label for="ds-filter-m-price-4">100만 ~ 200만원</label>
+                </div>
+                <div class="ds-filter-tag-price">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-m-price-5" name="f_t" data-context="200만~300만원" value="5">
+                    <label for="ds-filter-m-price-5">200만 ~300만원</label>
+                </div>
+                <div class="ds-filter-tag-price">
+                    <input type="checkbox" class="ds-filter-tag-bt-checkbox" id="ds-filter-m-price-6" name="f_t" data-context="300만~500만원" value="6">
+                    <label for="ds-filter-m-price-6">300만 ~ 500만원</label>
+                </div>
+                <div id="slider-container1">
+                    <div id="slider1">
+                        <div class="tick" style="left: 0%;"></div>
+                        <div class="tick-label" style="left: 0%;">0</div>
+
+                        <div class="tick" style="left: 25%;"></div>
+                        <div class="tick-label" style="left: 25%;">125</div>
+
+                        <div class="tick" style="left: 50%;"></div>
+                        <div class="tick-label" style="left: 50%;">250</div>
+
+                        <div class="tick" style="left: 75%;"></div>
+                        <div class="tick-label" style="left: 75%;">375</div>
+
+                        <div class="tick" style="left: 100%;"></div>
+                        <div class="tick-label" style="left: 100%;">500</div>
+
+                        <div id="knob1"></div>
+                    </div>
+                    <div id="slider-label1">0</div>
+                </div>
+                <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                        const slider1 = document.getElementById("slider1");
+                        const knob1 = document.getElementById("knob1");
+                        const sliderLabel = document.getElementById("slider-label1");
+
+                        let isDragging = false;
+
+                        knob1.addEventListener("mousedown", function (event) {
+                            isDragging = true;
+                        });
+
+                        document.addEventListener("mousemove", function (event) {
+                            if (isDragging) {
+                                event.preventDefault(); // 스크롤 효과 방지
+                                const sliderRect = slider1.getBoundingClientRect();
+                                let position = (event.clientX - sliderRect.left) / sliderRect.width;
+
+                                position = Math.min(1, Math.max(0, position));
+                                const value = Math.round(position * 500);
+
+                                knob1.style.left = `${position * 100}%`;
+                                sliderLabel.textContent = `${value}만원`;
+                                sliderLabel.style.left = `${position * 100}%`;
+
+                                // 색상 변경
+                                slider1.style.background = `linear-gradient(to right, #FEEBCD 0%, #FEEBCD ${(position * 100)}%, #FEEBCD ${(position * 100)}%, #ddd ${position * 100}%)`;
+                            }
+                        });
+
+                        document.addEventListener("mouseup", function () {
+                            isDragging = false;
+                        });
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+    <script>
+      // Get reference to the filter header and content
+      const filterHeader = document.querySelector('.ds-filter-header');
+      const filterContent = document.querySelector('.ds-filter-content');
+
+      // Add click event listener to the filter header
+      filterHeader.addEventListener('click', function(event) {
+        // Check if the clicked element is a filter title
+        if (event.target.classList.contains('ds-filter-title')) {
+          // Remove 'active' class from all titles
+          filterHeader.querySelectorAll('.ds-filter-title').forEach(function(title) {
+            title.classList.remove('active');
+          });
+
+          // Add 'active' class to the clicked title
+          event.target.classList.add('active');
+
+          // Get the index of the clicked title
+          const index = event.target.getAttribute('data-index');
+
+          // Hide all content divs
+          filterContent.querySelectorAll('.ds-filter-tags').forEach(function(content) {
+            content.style.display = 'none';
+          });
+
+          // Show the content div corresponding to the clicked title
+          const selectedContent = filterContent.querySelector(`.ds-filter-tags[data-index="${index}"]`);
+          if (selectedContent) {
+            selectedContent.style.display = 'block';
+          }
+        }
+      });
+    </script>
+    <div class="select_button">
+        <button type="button">작품 구경 하기</button>
+    </div>
+    </section>
+
+    <div class="container2">
+        <div class="row">
+
+        <!-- Gallery Items
+        ================================================== -->
+            <div class="span12 gallery">
+                <div class="row clearfix">
+                    <ul class="gallery-post-grid holder">
+
+                        <!-- Gallery Item 1 -->
+                        <li  class="span4 gallery-item" data-id="id-1" data-type="illustration">
+                            <span class="gallery-hover-3col hidden-phone hidden-tablet">
+                                <span class="gallery-icons">
+                                    <a href="img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
+                                    <a href="gallery-single.htm" class="item-details-link"></a>
+                                </span>
+                            </span>
+                            <a href="gallery-single.htm"><img src="image/image.jpg" alt="Gallery"></a>
+                            <span class="project-details"><a href="gallery-single.htm">Custom Illustration</a>For an international add campaign.</span>
+                        </li>
+
+                        <!-- Gallery Item 2 -->
+                        <li class="span4 gallery-item" data-id="id-2" data-type="illustration">
+                            <span class="gallery-hover-3col hidden-phone hidden-tablet">
+                                <span class="gallery-icons">
+                                    <a href="img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
+                                    <a href="gallery-single.htm" class="item-details-link"></a>
+                                </span>
+                            </span>
+                            <a href="gallery-single.htm"><img src="image/image.jpg" alt="Gallery"></a>
+                            <span class="project-details"><a href="gallery-single.htm">3 Color Poster Design</a>For a regional festival event.</span>
+                        </li>
+
+                        <!-- Gallery Item 3 -->
+                        <li class="span4 gallery-item" data-id="id-3" data-type="web">
+                            <span class="gallery-hover-3col hidden-phone hidden-tablet">
+                                <span class="gallery-icons">
+                                    <a href="img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
+                                    <a href="gallery-single.htm" class="item-details-link"></a>
+                                </span>
+                            </span>
+                            <a href="gallery-single.htm"><img src="image/image.jpg" alt="Gallery"></a>
+                            <span class="project-details"><a href="gallery-single.htm">Ink Pen Illustration</a>Created for a best selling children's book.</span>
+                        </li>
+
+                        <!-- Gallery Item 4 -->
+                        <li class="span4 gallery-item" data-id="id-4" data-type="video">
+                            <span class="gallery-hover-3col hidden-phone hidden-tablet">
+                                <span class="gallery-icons">
+                                    <a href="img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
+                                    <a href="gallery-single.htm" class="item-details-link"></a>
+                                </span>
+                            </span>
+                           <a href="gallery-single.htm"><img src="image/image.jpg" alt="Gallery"></a>
+                            <span class="project-details"><a href="gallery-single.htm">Custom Illustration</a>For an international add campaign.</span>
+                        </li>
+
+                        <!-- Gallery Item 5 -->
+                        <li class="span4 gallery-item" data-id="id-5" data-type="web illustration">
+                            <span class="gallery-hover-3col hidden-phone hidden-tablet">
+                                <span class="gallery-icons">
+                                    <a href="img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
+                                    <a href="gallery-single.htm" class="item-details-link"></a>
+                                </span>
+                            </span>
+                            <a href="gallery-single.htm"><img src="image/image.jpg" alt="Gallery"></a>
+                            <span class="project-details"><a href="gallery-single.htm">Icon Design</a>Classic retro style illustration.</span>
+                        </li>
+
+                        <!-- Gallery Item 6 -->
+                        <li class="span4 gallery-item" data-id="id-6" data-type="illustration design">
+                            <span class="gallery-hover-3col hidden-phone hidden-tablet">
+                                <span class="gallery-icons">
+                                    <a href="img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
+                                    <a href="gallery-single.htm" class="item-details-link"></a>
+                                </span>
+                            </span>
+                            <a href="gallery-single.htm"><img src="image/image.jpg" alt="Gallery"></a>
+                            <span class="project-details"><a href="gallery-single.htm">Animation Cell</a>Creative storyboard illustration</span>
+                        </li>
+
+                        <!-- Gallery Item 7 -->
+                        <li class="span4 gallery-item" data-id="id-7" data-type="design">
+                            <span class="gallery-hover-3col hidden-phone hidden-tablet">
+                                <span class="gallery-icons">
+                                    <a href="img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
+                                    <a href="gallery-single.htm" class="item-details-link"></a>
+                                </span>
+                            </span>
+                            <a href="gallery-single.htm"><img src="image/image.jpg" alt="Gallery"></a>
+                            <span class="project-details"><a href="gallery-single.htm">Poster Ad Campaign</a>Regional ad for a local company.</span>
+                        </li>
+
+                        <!-- Gallery Item 8 -->
+                        <li class="span4 gallery-item" data-id="id-8" data-type="web video">
+                            <span class="gallery-hover-3col hidden-phone hidden-tablet">
+                                <span class="gallery-icons">
+                                    <a href="img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
+                                    <a href="gallery-single.htm" class="item-details-link"></a>
+                                </span>
+                            </span>
+                            <a href="gallery-single.htm"><img src="image/image.jpg" alt="Gallery"></a>
+                            <span class="project-details"><a href="gallery-single.htm">Magazine Ad</a>For an international add campaign.</span>
+                        </li>
+
+                        <!-- Gallery Item 9 -->
+                        <li class="span4 gallery-item" data-id="id-9" data-type="design">
+                            <span class="gallery-hover-3col hidden-phone hidden-tablet">
+                                <span class="gallery-icons">
+                                    <a href="img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
+                                    <a href="gallery-single.htm" class="item-details-link"></a>
+                                </span>
+                            </span>
+                            <a href="gallery-single.htm"><img src="image/image.jpg" alt="Gallery"></a>
+                            <span class="project-details"><a href="gallery-single.htm">Character Designs</a>For a feature film.</span>
+                        </li>
+
+                        <!-- Gallery Item 10 -->
+                        <li class="span4 gallery-item" data-id="id-10" data-type="web design">
+                            <span class="gallery-hover-3col hidden-phone hidden-tablet">
+                                <span class="gallery-icons">
+                                    <a href="img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
+                                    <a href="gallery-single.htm" class="item-details-link"></a>
+                                </span>
+                            </span>
+                            <a href="gallery-single.htm"><img src="image/image.jpg" alt="Gallery"></a>
+                            <span class="project-details"><a href="gallery-single.htm">Poster and Ad Design</a>For an international add campaign.</span>
+                        </li>
+
+                        <!-- Gallery Item 11 -->
+                        <li class="span4 gallery-item" data-id="id-11" data-type="illustration">
+                            <span class="gallery-hover-3col hidden-phone hidden-tablet">
+                                <span class="gallery-icons">
+                                    <a href="img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
+                                    <a href="gallery-single.htm" class="item-details-link"></a>
+                                </span>
+                            </span>
+                            <a href="gallery-single.htm"><img src="image/image.jpg" alt="Gallery"></a>
+                            <span class="project-details"><a href="gallery-single.htm">Website and Animation</a>For a local business.</span>
+                        </li>
+
+                        <!-- Gallery Item 12 -->
+                        <li class="span4 gallery-item" data-id="id-12" data-type="illustration video">
+                            <span class="gallery-hover-3col hidden-phone hidden-tablet">
+                                <span class="gallery-icons">
+                                    <a href="img/gallery/gallery-img-1-full.jpg" class="item-zoom-link lightbox" title="Custom Illustration" data-rel="prettyPhoto"></a>
+                                    <a href="gallery-single.htm" class="item-details-link"></a>
+                                </span>
+                            </span>
+                            <a href="gallery-single.htm"><img src="image/image.jpg" alt="Gallery"></a>
+                            <span class="project-details"><a href="gallery-single.htm">Branding Design</a>For an international add campaign.</span>
+                        </li>
+
+                    </ul>
+                </div>
+
+        </div><!-- End gallery list-->
+
+    </div><!-- End container row -->
+    </div>
+
+    <!-- Core JavaScript
+    ================================================== -->
+    <script src="nav_js/jquery.min.js"></script>
+    <script src="nav_js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.js"></script><!--이미지 호버시 돋보기 등 출력 및 클릭 시 확대 js -->
+    <script src="js/jquery.prettyPhoto.js"></script><!-- 사용 안할 예정 위에서 클릭 이후 출력된 이미지를 모달 형식으로 출력 -->
+    <script src="js/jquery.custom.js"></script>
+
+</body>
+</html>
+
