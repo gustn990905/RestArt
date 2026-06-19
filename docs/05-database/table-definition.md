@@ -1,4 +1,4 @@
-# Table Definition
+﻿# Table Definition
 
 ## 개요
 
@@ -76,7 +76,7 @@ RestArt에 작품을 등록하는 작가의 기본 정보를 관리한다.
 
 작품의 기본 정보를 저장하는 핵심 테이블이다.
 
-Day 4에서 정리한 기존 loader의 `url`, `title`, `author`, `description`, `main_color` 데이터를 이 테이블과 연결한다.
+4단계에서 정리한 기존 loader의 `url`, `title`, `author`, `description`, `main_color` 데이터를 이 테이블과 연결한다.
 
 ### 주요 컬럼
 
@@ -362,3 +362,4 @@ RestArt 감성 기준 테이블이다.
 RestArt DB는 작품 DB를 중심으로 구성된다.
 
 작품 데이터는 색상, 감성, 추천, 리플릿, 전시 기능과 연결되며, 공간 기반 작품 추천과 모바일 리플릿 기능 모두에서 공통 기반 데이터로 활용된다.
+

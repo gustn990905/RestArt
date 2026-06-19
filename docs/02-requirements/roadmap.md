@@ -1,16 +1,16 @@
-# Roadmap
+﻿# Roadmap
 
 ## 1. 문서 목적
 
-이 문서는 RestArt 저장소의 Day 4 이후 개발 산출물 정리 순서를 정의한다.
+이 문서는 RestArt 저장소의 4단계 이후 개발 산출물 정리 순서를 정의한다.
 
-Day 1부터 Day 3까지는 프로젝트 구조, 개요, 기획, 요구사항을 정리했다. Day 4부터는 실제 개발 산출물 중심으로 백엔드, DB, AI, Unity/AR, 웹, 모바일, 디자인, 검증 자료를 순차적으로 정리한다.
+1단계부터 3단계까지는 프로젝트 구조, 개요, 기획, 요구사항을 정리했다. 4단계부터는 실제 개발 산출물 중심으로 백엔드, DB, AI, Unity/AR, 웹, 모바일, 디자인, 검증 자료를 순차적으로 정리한다.
 
 ---
 
 ## 2. 진행 완료
 
-### Day 1. Repository Setup
+### 1단계. Repository Setup
 
 완료 내용은 다음과 같다.
 
@@ -25,7 +25,7 @@ Day 1부터 Day 3까지는 프로젝트 구조, 개요, 기획, 요구사항을 
 
 ---
 
-### Day 2. Project Overview and Initial Planning
+### 2단계. Project Overview and Initial Planning
 
 완료 내용은 다음과 같다.
 
@@ -45,7 +45,7 @@ Day 1부터 Day 3까지는 프로젝트 구조, 개요, 기획, 요구사항을 
 
 ---
 
-### Day 3. Product Requirements and Development Scope
+### 3단계. Product Requirements and Development Scope
 
 완료 예정 내용은 다음과 같다.
 
@@ -69,9 +69,9 @@ Day 1부터 Day 3까지는 프로젝트 구조, 개요, 기획, 요구사항을 
 
 ---
 
-## 3. Day 4 이후 개발 정리 계획
+## 3. 4단계 이후 개발 정리 계획
 
-### Day 4. Backend/API Workspace and Scope
+### 4단계. Backend/API Workspace and Scope
 
 작업 내용:
 
@@ -87,7 +87,7 @@ Day 1부터 Day 3까지는 프로젝트 구조, 개요, 기획, 요구사항을 
 
 ---
 
-### Day 5. Backend API Prototype
+### 5단계. Backend API Prototype
 
 작업 내용:
 
@@ -102,7 +102,7 @@ Day 1부터 Day 3까지는 프로젝트 구조, 개요, 기획, 요구사항을 
 
 ---
 
-### Day 6. Database Schema and Data Structure
+### 6단계. Database Schema and Data Structure
 
 작업 내용:
 
@@ -118,7 +118,7 @@ Day 1부터 Day 3까지는 프로젝트 구조, 개요, 기획, 요구사항을 
 
 ---
 
-### Day 7. AI Recommendation Architecture
+### 7단계. AI Recommendation Architecture
 
 작업 내용:
 
@@ -133,7 +133,7 @@ Day 1부터 Day 3까지는 프로젝트 구조, 개요, 기획, 요구사항을 
 
 ---
 
-### Day 8. AI Recommendation Pipeline
+### 8단계. AI Recommendation Pipeline
 
 작업 내용:
 
@@ -149,7 +149,7 @@ Day 1부터 Day 3까지는 프로젝트 구조, 개요, 기획, 요구사항을 
 
 ---
 
-### Day 9. Unity/AR Implementation Notes
+### 9단계. Unity/AR Implementation Notes
 
 작업 내용:
 
@@ -164,7 +164,7 @@ Day 1부터 Day 3까지는 프로젝트 구조, 개요, 기획, 요구사항을 
 
 ---
 
-### Day 10. Unity AR Placement Prototype
+### 10단계. Unity AR Placement Prototype
 
 작업 내용:
 
@@ -179,7 +179,7 @@ Day 1부터 Day 3까지는 프로젝트 구조, 개요, 기획, 요구사항을 
 
 ---
 
-### Day 11. Web Frontend
+### 11단계. Web Frontend
 
 작업 내용:
 
@@ -193,7 +193,7 @@ Day 1부터 Day 3까지는 프로젝트 구조, 개요, 기획, 요구사항을 
 
 ---
 
-### Day 12. Web Feature Pages
+### 12단계. Web Feature Pages
 
 작업 내용:
 
@@ -210,7 +210,7 @@ Day 1부터 Day 3까지는 프로젝트 구조, 개요, 기획, 요구사항을 
 
 ---
 
-### Day 13. Mobile Application
+### 13단계. Mobile Application
 
 작업 내용:
 
@@ -224,7 +224,7 @@ Day 1부터 Day 3까지는 프로젝트 구조, 개요, 기획, 요구사항을 
 
 ---
 
-### Day 14. Figma and Screen Captures
+### 14단계. Figma and Screen Captures
 
 작업 내용:
 
@@ -240,7 +240,7 @@ Day 1부터 Day 3까지는 프로젝트 구조, 개요, 기획, 요구사항을 
 
 ---
 
-### Day 15. Design System and Mockups
+### 15단계. Design System and Mockups
 
 작업 내용:
 
@@ -256,7 +256,7 @@ Day 1부터 Day 3까지는 프로젝트 구조, 개요, 기획, 요구사항을 
 
 ---
 
-### Day 16. Validation and Release Roadmap
+### 16단계. Validation and Release Roadmap
 
 작업 내용:
 
@@ -272,7 +272,7 @@ Day 1부터 Day 3까지는 프로젝트 구조, 개요, 기획, 요구사항을 
 
 ---
 
-### Day 17. Portfolio README
+### 17단계. Portfolio README
 
 작업 내용:
 
@@ -294,6 +294,8 @@ Day 1부터 Day 3까지는 프로젝트 구조, 개요, 기획, 요구사항을 
 
 ## 4. 정리
 
-Day 3 이후에는 기획 문서 추가를 최소화하고, 실제 개발 산출물 중심으로 정리한다.
+3단계 이후에는 기획 문서 추가를 최소화하고, 실제 개발 산출물 중심으로 정리한다.
 
-기획 문서는 Day 3에서 마감하며, 이후에는 개발 산출물 설명에 필요한 범위에서만 보완한다.
+기획 문서는 3단계에서 마감하며, 이후에는 개발 산출물 설명에 필요한 범위에서만 보완한다.
+
+

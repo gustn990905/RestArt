@@ -1,4 +1,4 @@
-# Data Dictionary
+﻿# Data Dictionary
 
 ## 개요
 
@@ -272,6 +272,7 @@ RestArt 감성 기준 테이블이다.
 
 ## 정리
 
-이 Data Dictionary는 Day 5의 `schema.sql` 작성 기준으로 사용한다.
+이 Data Dictionary는 5단계의 `schema.sql` 작성 기준으로 사용한다.
 
 향후 실제 운영 단계에서는 컬럼 제약조건, 인덱스, nullable 여부, foreign key 제약조건을 더 구체화할 수 있다.
+
